@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>sweIhm.ws2018-19</groupId>
+  <artifactId>skillproject.fr.13</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0</version>
+  <name>Skill project Fr 13</name>
+  
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+  
+  <developers>
+	<developer>
+		<name>HoferAnton</name>
+		<url>https://github.com/HoferAnton</url>
+	</developer>
+	<developer>
+		<name>OneToughMonkey</name>
+		<url>https://github.com/OneToughMonkey</url>
+	</developer>
+	<developer>
+		<name>phiebl</name>
+		<url>https://github.com/phiebl</url>
+	</developer>
+	<developer>
+		<name>Sumarinal</name>
+		<url>https://github.com/hexahepta</url>
+	</developer>
+    <developer>
+      <name>Alexa Skills Kit</name>
+      <email>ask-sdk-java@amazon.com</email>
+      <organization>Alexa</organization>
+      <organizationUrl>http://developer.amazon.com/ask</organizationUrl>
+    </developer>
+  </developers>
+  
+  <scm>
+    <connection>scm:git:https://github.com/sweIhm-ws2018-19/skillproject-fr_13.git</connection>
+    <developerConnection>scm:git:https://github.com/sweIhm-ws2018-19/skillproject-fr_13.git</developerConnection>
+    <url>https://github.com/sweIhm-ws2018-19/skillproject-fr_13.git</url>
+  </scm>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.amazon.alexa</groupId>
+      <artifactId>ask-sdk</artifactId>
+      <version>2.5.5</version>
+    </dependency>
+  </dependencies>
+  
+</project>

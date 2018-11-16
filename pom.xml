@@ -53,4 +53,9 @@
     </dependency>
   </dependencies>
   
+  <modules>
+    <module>colorpicker</module>
+    <module>scorekeeper</module>
+  </modules>
+
 </project>

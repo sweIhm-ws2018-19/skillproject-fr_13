@@ -20,8 +20,7 @@
 		<url>https://github.com/HoferAnton</url>
 	</developer>
 	<developer>
-		<name>OneToughMonkey</name>
-		<url>https://github.com/OneToughMonkey</url>
+		<name>OneToughMonkey</name> <url>https://github.com/OneToughMonkey</url>
 	</developer>
 	<developer>
 		<name>phiebl</name>
@@ -54,8 +53,8 @@
   </dependencies>
   
   <modules>
-    <module>colorpicker</module>
-    <module>scorekeeper</module>
+    <module>ColorPicker</module>
+    <module>ScoreKeeper</module>
   </modules>
 
 </project>

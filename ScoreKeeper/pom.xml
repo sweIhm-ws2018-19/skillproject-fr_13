@@ -3,15 +3,15 @@
   <modelVersion>4.0.0</modelVersion>  
   
   <parent>
-	  <groupId>sweIhm.ws2018-19</groupId>
-    <artifactId>skillproject.fr.13</artifactId>
-	  <version>1.0</version>
+	<groupId>sweIhm.ws2018-19</groupId>
+  <artifactId>skillproject.fr.13</artifactId>
+	<version>1.0</version>
   </parent>
   
-	<artifactId>colorpicker</artifactId>
+	<artifactId>scorekeeper</artifactId>
 
   <packaging>jar</packaging>
-  <name>colorpicker</name>
+  <name>scorekeeper</name>
   <url>http://developer.amazon.com/ask</url>
   <licenses>
     <license>
@@ -19,27 +19,6 @@
       <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
     </license>
   </licenses>
-  <developers>
-    <developer>
-      <name>Alexa Skills Kit</name>
-      <email>ask-sdk-java@amazon.com</email>
-      <organization>Alexa</organization>
-      <organizationUrl>http://developer.amazon.com/ask</organizationUrl>
-    </developer>
-  </developers>
-  <scm>
-    <connection>scm:git:https://github.com/amzn/alexa-skills-kit-java.git</connection>
-    <developerConnection>scm:git:https://github.com/amzn/alexa-skills-kit-java.git</developerConnection>
-    <url>https://github.com/amzn/alexa-skills-kit-java.git</url>
-  </scm>
-
-  <dependencies>
-    <dependency>
-      <groupId>com.amazon.alexa</groupId>
-      <artifactId>ask-sdk</artifactId>
-      <version>2.5.5</version>
-    </dependency>
-  </dependencies>
 
   <build>
     <sourceDirectory>src</sourceDirectory>

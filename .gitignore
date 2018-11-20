@@ -4,6 +4,8 @@
 
 # target
 target/*
+ColorPicker/target/*
+ScoreKeeper/target/*
 
 # Compiled class file
 *.class

@@ -19,7 +19,7 @@ public class SetPlayerScoreIntentHandler implements RequestHandler {
 	public boolean canHandle(HandlerInput input) {
 		return input.matches(intentName("SetPlayerScoreIntent")) &&
 				input.getAttributesManager()
-					.getSessionAttributes()
+					.getPersistentAttributes()
 					.containsKey("ScoreTable");
 	}
 
@@ -35,12 +35,16 @@ public class SetPlayerScoreIntentHandler implements RequestHandler {
 			final String playerName = playerNameSlot.getValue();
 			final long points = Long.parseLong(pointsSlot.getValue());
 			
-			final Map<String, Long> scoreTable = (Map<String, Long>) input
+			final Map<String, Object> persistentAttributes = input
 					.getAttributesManager()
-					.getPersistentAttributes()
+					.getPersistentAttributes();
+			
+			final Map<String, Long> scoreTable = (Map<String, Long>) persistentAttributes
 					.get("ScoreTable");
 			
 			scoreTable.put(playerName, points);
+			persistentAttributes.put("ScoreTable", scoreTable);
+			input.getAttributesManager().savePersistentAttributes();
 			
 			response = String.format(CONFIRMATION, playerName, points);
 			

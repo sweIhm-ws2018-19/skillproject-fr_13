@@ -23,6 +23,7 @@
                     "name": "StartGameSessionIntent",
                     "slots": [],
                     "samples": [
+                        "los geht's",
                         "spiel starten",
                         "neues spiel",
                         "starte ein neues spiel",
@@ -45,15 +46,18 @@
                         }
                     ],
                     "samples": [
+                        "merk dir {Points} punkte für {PlayerName}",
+                        "schreib {Points} punkte für {PlayerName}",
                         "{PlayerName} hat {Points} punkte",
                         "{Points} punkte für {PlayerName}",
-                        "{PlayerName}, {Points} punkte"
+                        "{PlayerName}  {Points} punkte"
                     ]
                 },
                 {
                     "name": "GetPlayerScoresIntent",
                     "slots": [],
                     "samples": [
+                        "sag mir den punktestand",
                         "punktestand",
                         "was ist der punktestand",
                         "wieviel steht es",

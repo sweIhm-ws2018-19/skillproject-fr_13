@@ -22,7 +22,7 @@ public class HelpIntentHandler implements RequestHandler {
 
 	public Optional<Response> handle(HandlerInput input) {	
 		final boolean isGameSessionRunning = input.getAttributesManager()
-				.getSessionAttributes().containsKey("ScoreTable");
+				.getPersistentAttributes().containsKey("ScoreTable");
 	
 		return input.getResponseBuilder()
 				.withSpeech(isGameSessionRunning ? HELP_INSESSION : HELP_NOSESSION)

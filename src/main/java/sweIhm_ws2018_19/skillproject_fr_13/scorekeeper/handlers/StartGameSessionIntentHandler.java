@@ -26,6 +26,7 @@ public class StartGameSessionIntentHandler implements RequestHandler {
 		input.getAttributesManager()
 			.getPersistentAttributes()
 			.put("ScoreTable", new HashMap<String, Long>());
+		input.getAttributesManager().savePersistentAttributes();
 
 		return input.getResponseBuilder()
 				.withSpeech(CONFIRMATION)

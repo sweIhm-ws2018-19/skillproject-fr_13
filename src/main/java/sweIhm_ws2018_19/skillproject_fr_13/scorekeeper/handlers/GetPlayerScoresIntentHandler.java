@@ -15,7 +15,7 @@ public class GetPlayerScoresIntentHandler implements RequestHandler {
 	public boolean canHandle(HandlerInput input) {
 		return input.matches(intentName("GetPlayerScoresIntent")) &&
 				input.getAttributesManager()
-					.getSessionAttributes()
+					.getPersistentAttributes()
 					.containsKey("ScoreTable");
 	}
 
@@ -29,12 +29,12 @@ public class GetPlayerScoresIntentHandler implements RequestHandler {
 		if (scoreTable.isEmpty())
 			response = "Ich habe noch keinen Punktestand gespeichert.";
 		else
-			response = "Der aktuelle Punktestand lautet:" +
+			response = "Der aktuelle Punktestand lautet: " +
 					scoreTable
 					.entrySet()
 					.stream()
-					.map(entry -> "Spieler" + entry.getKey() + ": " +
-							entry.getValue() + "Punkte")
+					.map(entry -> "Spieler " + entry.getKey() + ": " +
+							entry.getValue() + " Punkte")
 					.collect(Collectors.joining(", "));
 		
 		return input.getResponseBuilder()

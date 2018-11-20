@@ -18,7 +18,7 @@ public class SetPlayerScoreIntentHandler implements RequestHandler {
 	public static final String REPROMPT = "Ähm... was?";
 	
 	public boolean canHandle(HandlerInput input) {
-		return input.matches(intentName("SetPlayerScoreIntentHandler")) &&
+		return input.matches(intentName("SetPlayerScoreIntent")) &&
 				input.getAttributesManager().getSessionAttributes().containsKey("ScoreTable");
 	}
 
@@ -32,17 +32,20 @@ public class SetPlayerScoreIntentHandler implements RequestHandler {
 			final String playerName = playerNameSlot.getValue();
 			final long points = Long.parseLong(pointsSlot.getValue());
 			
-			((Map<String, Long>) input.getAttributesManager()
-				.getSessionAttributes()
+			final Map<String, Object> persistentAttributes =
+					input.getAttributesManager().getPersistentAttributes();
+			
+			((Map<String, Long>) persistentAttributes
 				.get("ScoreTable"))
 				.put(playerName, points);
 			
 			responseBuilder.withSpeech(String.format(CONFIRMATION, playerName, points));
 			
-			
 		} catch (NullPointerException | NumberFormatException e) {
 			responseBuilder.withReprompt(REPROMPT);
 		}
+		
+		responseBuilder.withSpeech("test");
 		
 		return responseBuilder.withShouldEndSession(false).build();
 	}

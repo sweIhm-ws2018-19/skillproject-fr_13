@@ -21,13 +21,17 @@ public class HelpIntentHandler implements RequestHandler {
 	}
 
 	public Optional<Response> handle(HandlerInput input) {
-		final boolean isGameSessionRunning = (Boolean) input.getAttributesManager()
-			.getSessionAttributes()
-			.getOrDefault("isGameSessionRunning", false);
+		final String response = String.valueOf(
+				input.getAttributesManager().getSessionAttributes().getClass());
+		
+		final boolean isGameSessionRunning = input.getAttributesManager()
+				.getSessionAttributes().containsKey("ScoreTable");
 	
 		return input.getResponseBuilder()
 				.withSpeech(isGameSessionRunning ? HELP_INSESSION : HELP_NOSESSION)
+				.withShouldEndSession(false)
 				.build();
+				
 	}
 
 }

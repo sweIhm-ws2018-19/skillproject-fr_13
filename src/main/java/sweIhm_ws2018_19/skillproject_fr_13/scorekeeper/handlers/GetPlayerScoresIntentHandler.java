@@ -13,21 +13,21 @@ import com.amazon.ask.model.Response;
 public class GetPlayerScoresIntentHandler implements RequestHandler {
 		
 	public boolean canHandle(HandlerInput input) {
-		return input.matches(intentName("GetPlayerScoresIntentHandler")) &&
+		return input.matches(intentName("GetPlayerScoresIntent")) &&
 				input.getAttributesManager().getSessionAttributes().containsKey("ScoreTable");
 	}
 
 	public Optional<Response> handle(HandlerInput input) {
+		final Map <String, Object> persistentAttributes = input.getAttributesManager()
+				.getPersistentAttributes();
 		return input.getResponseBuilder()
 				.withSpeech("Der aktuelle Punktestand lautet:" +
-						((Map<String, Long>) input.getAttributesManager()
-							.getSessionAttributes()
+						((Map<String, Long>) persistentAttributes
 							.get("ScoreTable"))
 							.entrySet()
 							.stream()
 							.map(entry ->
-								"Spieler" + entry.getKey() + ": " + entry.getValue() + "Punkte;"
-							)
+								"Spieler" + entry.getKey() + ": " + entry.getValue() + "Punkte;")
 							.collect(Collectors.joining(" ")))
 				.withShouldEndSession(false)
 				.build();

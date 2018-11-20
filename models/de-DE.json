@@ -1,0 +1,70 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "score keeper",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "StartGameSessionIntent",
+                    "slots": [],
+                    "samples": [
+                        "spiel starten",
+                        "neues spiel",
+                        "starte ein neues spiel",
+                        "starte ein spiel",
+                        "ich will spielen",
+                        "lass uns spielen",
+                        "du schreibst"
+                    ]
+                },
+                {
+                    "name": "SetPlayerScoreIntent",
+                    "slots": [
+                        {
+                            "name": "PlayerName",
+                            "type": "AMAZON.DE_FIRST_NAME"
+                        },
+                        {
+                            "name": "Points",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "{PlayerName} hat {Points} punkte",
+                        "{Points} punkte für {PlayerName}",
+                        "{PlayerName}, {Points} punkte"
+                    ]
+                },
+                {
+                    "name": "GetPlayerScoresIntent",
+                    "slots": [],
+                    "samples": [
+                        "punktestand",
+                        "was ist der punktestand",
+                        "wieviel steht es",
+                        "wie lautet der punktestand",
+                        "lies mir die punkte vor",
+                        "lies mir den punktestand vor",
+                        "sag mir die punkte"
+                    ]
+                }
+            ],
+            "types": []
+        }
+    }
+}

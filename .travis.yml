@@ -1,7 +1,8 @@
 language: java
 jdk: oraclejdk8
 
-install: true # skip install step
+install: 
+  - mvn dependency:resolve
 
 script:
   - mvn package

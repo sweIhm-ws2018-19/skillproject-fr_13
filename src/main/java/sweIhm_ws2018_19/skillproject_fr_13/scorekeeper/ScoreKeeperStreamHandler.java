@@ -25,6 +25,8 @@ public class ScoreKeeperStreamHandler extends SkillStreamHandler {
                        new HelpIntentHandler(),
                        new LaunchRequestHandler(),
                        new SessionEndedRequestHandler())
+                .withTableName("scorekeeper-table")
+                .withAutoCreateTable(true)
                 .build();
     }
     

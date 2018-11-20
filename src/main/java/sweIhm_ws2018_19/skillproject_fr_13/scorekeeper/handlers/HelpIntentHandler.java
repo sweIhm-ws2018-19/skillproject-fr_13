@@ -13,17 +13,14 @@ public class HelpIntentHandler implements RequestHandler {
 	public static final String HELP_NOSESSION =
 			"Du kannst mich auffordern, eine Spielsitzung zu starten.";
 	public static final String HELP_INSESSION =
-			"Nenne mir den Namen eines Spielteilnehmers und seinen Punktestand oder frage mich" +
-					"nach dem aktuellen Punktestand.";
+			"Nenne mir den Namen eines Spielteilnehmers und seinen Punktestand" +
+					"oder frage mich nach dem aktuellen Punktestand.";
 	
 	public boolean canHandle(HandlerInput input) {
 		return input.matches(intentName("AMAZON.HelpIntent"));
 	}
 
-	public Optional<Response> handle(HandlerInput input) {
-		final String response = String.valueOf(
-				input.getAttributesManager().getSessionAttributes().getClass());
-		
+	public Optional<Response> handle(HandlerInput input) {	
 		final boolean isGameSessionRunning = input.getAttributesManager()
 				.getSessionAttributes().containsKey("ScoreTable");
 	

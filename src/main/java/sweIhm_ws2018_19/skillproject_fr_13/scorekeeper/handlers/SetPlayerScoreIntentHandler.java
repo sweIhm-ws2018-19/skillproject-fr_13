@@ -10,7 +10,6 @@ import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.IntentRequest;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
-import com.amazon.ask.response.ResponseBuilder;
 
 public class SetPlayerScoreIntentHandler implements RequestHandler {
 	
@@ -19,35 +18,40 @@ public class SetPlayerScoreIntentHandler implements RequestHandler {
 	
 	public boolean canHandle(HandlerInput input) {
 		return input.matches(intentName("SetPlayerScoreIntent")) &&
-				input.getAttributesManager().getSessionAttributes().containsKey("ScoreTable");
+				input.getAttributesManager()
+					.getSessionAttributes()
+					.containsKey("ScoreTable");
 	}
 
 	public Optional<Response> handle(HandlerInput input) {
-		final Map<String, Slot> slots = ((IntentRequest) input.getRequest()).getIntent().getSlots();
+		final Map<String, Slot> slots = ((IntentRequest) input.getRequest())
+				.getIntent()
+				.getSlots();
 		final Slot playerNameSlot = slots.get("PlayerName");
 		final Slot pointsSlot = slots.get("Points");
-		final ResponseBuilder responseBuilder = input.getResponseBuilder();
+		String response;
 		
 		try {
 			final String playerName = playerNameSlot.getValue();
 			final long points = Long.parseLong(pointsSlot.getValue());
 			
-			final Map<String, Object> persistentAttributes =
-					input.getAttributesManager().getPersistentAttributes();
+			final Map<String, Long> scoreTable = (Map<String, Long>) input
+					.getAttributesManager()
+					.getPersistentAttributes()
+					.get("ScoreTable");
 			
-			((Map<String, Long>) persistentAttributes
-				.get("ScoreTable"))
-				.put(playerName, points);
+			scoreTable.put(playerName, points);
 			
-			responseBuilder.withSpeech(String.format(CONFIRMATION, playerName, points));
+			response = String.format(CONFIRMATION, playerName, points);
 			
 		} catch (NullPointerException | NumberFormatException e) {
-			responseBuilder.withReprompt(REPROMPT);
+			response = REPROMPT;
 		}
 		
-		responseBuilder.withSpeech("test");
-		
-		return responseBuilder.withShouldEndSession(false).build();
+		return input.getResponseBuilder()
+				.withSpeech(response)
+				.withShouldEndSession(false)
+				.build();
 	}
 
 }

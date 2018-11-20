@@ -14,21 +14,31 @@ public class GetPlayerScoresIntentHandler implements RequestHandler {
 		
 	public boolean canHandle(HandlerInput input) {
 		return input.matches(intentName("GetPlayerScoresIntent")) &&
-				input.getAttributesManager().getSessionAttributes().containsKey("ScoreTable");
+				input.getAttributesManager()
+					.getSessionAttributes()
+					.containsKey("ScoreTable");
 	}
 
 	public Optional<Response> handle(HandlerInput input) {
-		final Map <String, Object> persistentAttributes = input.getAttributesManager()
-				.getPersistentAttributes();
+		final Map<String, Long> scoreTable = (Map<String, Long>) input
+				.getAttributesManager()
+				.getPersistentAttributes()
+				.get("ScoreTable");
+		final String response;
+		
+		if (scoreTable.isEmpty())
+			response = "Ich habe noch keinen Punktestand gespeichert.";
+		else
+			response = "Der aktuelle Punktestand lautet:" +
+					scoreTable
+					.entrySet()
+					.stream()
+					.map(entry -> "Spieler" + entry.getKey() + ": " +
+							entry.getValue() + "Punkte")
+					.collect(Collectors.joining(", "));
+		
 		return input.getResponseBuilder()
-				.withSpeech("Der aktuelle Punktestand lautet:" +
-						((Map<String, Long>) persistentAttributes
-							.get("ScoreTable"))
-							.entrySet()
-							.stream()
-							.map(entry ->
-								"Spieler" + entry.getKey() + ": " + entry.getValue() + "Punkte;")
-							.collect(Collectors.joining(" ")))
+				.withSpeech(response)
 				.withShouldEndSession(false)
 				.build();
 	}

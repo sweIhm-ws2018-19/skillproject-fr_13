@@ -19,6 +19,7 @@ public class CancelAndStopIntentHandler implements RequestHandler {
 	public Optional<Response> handle(HandlerInput input) {
 		return input.getResponseBuilder()
 				.withSpeech(BYE)
+				.withShouldEndSession(true)
 				.build();
 	}
 

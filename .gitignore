@@ -2,10 +2,16 @@
 .idea/*
 *.iml
 
+# Eclipse
+.project
+.classpath
+.settings/*
+
+# Mvn release backup pom
+pom.xml.releaseBackup
+
 # target
 target/*
-ColorPicker/target/*
-ScoreKeeper/target/*
 
 # Compiled class file
 *.class
@@ -30,3 +36,4 @@ ScoreKeeper/target/*
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/target/

@@ -15,7 +15,6 @@ public class SessionEndedRequestHandler implements RequestHandler {
 	}
 
 	public Optional<Response> handle(HandlerInput input) {
-		input.getAttributesManager().savePersistentAttributes();
 		return input.getResponseBuilder()
 				.build();
 	}

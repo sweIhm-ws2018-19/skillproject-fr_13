@@ -66,6 +66,20 @@
                         "lies mir den punktestand vor",
                         "sag mir die punkte"
                     ]
+                },
+                {
+                    "name": "EndGameSessionIntent",
+                    "slots": [],
+                    "samples": [
+                        "spiel ende",
+                        "spiel beenden",
+                        "spielsitzung beenden",
+                        "spielende",
+                        "wir sind fertig",
+                        "das spiel ist aus",
+                        "beende die spielsitzung",
+                        "beende das spiel"
+                    ]
                 }
             ],
             "types": []

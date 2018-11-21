@@ -2,7 +2,6 @@ package sweIhm_ws2018_19.skillproject_fr_13.scorekeeper.handlers;
 
 import static com.amazon.ask.request.Predicates.intentName;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -10,18 +9,13 @@ import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 
-public class StartGameSessionIntentHandler implements RequestHandler {
+public class EndGameSessionIntentHandler implements RequestHandler {
 	
-	public static final String CONFIRMATION =
-			"Die Spielsitzung wurde gestartet. " +
-					"<say-as interpret-as=\"interjection\">Viel Glück</say-as>!";
-	public static final String SESSION_RUNNING =
-			"Es läuft bereits eine Spielsitzung. " +
-					"Du must die letzte Spielsitzung beenden, " +
-					"bevor du eine neue starten kannst.";
+	public static final String CONFIRMATION = "Die Spielsitzung wurde beendet!";
+	public static final String NO_SESSION = "Es läuft noch keine Spielsitzung.";
 	
 	public boolean canHandle(HandlerInput input) {
-		return input.matches(intentName("StartGameSessionIntent"));
+		return input.matches(intentName("EndGameSessionIntent"));
 	}
 
 	public Optional<Response> handle(HandlerInput input) {
@@ -29,14 +23,12 @@ public class StartGameSessionIntentHandler implements RequestHandler {
 				.getPersistentAttributes();
 		final String response;
 		
-		if (persistentAttributes.containsKey("ScoreTable"))
-			response = SESSION_RUNNING;
-		else {
-			persistentAttributes
-				.put("ScoreTable", new HashMap<String, Long>());
+		if (persistentAttributes.containsKey("ScoreTable")) {
+			persistentAttributes.remove("ScoreTable");
 			input.getAttributesManager().savePersistentAttributes();
 			response = CONFIRMATION;
-		}
+		} else
+			response = NO_SESSION;
 
 		return input.getResponseBuilder()
 				.withSpeech(response)

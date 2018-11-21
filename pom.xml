@@ -3,7 +3,7 @@
 
   <groupId>sweIhm_ws2018_19.skillproject_fr_13</groupId>
   <artifactId>scorekeeper</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>ScoreKeeper</name>

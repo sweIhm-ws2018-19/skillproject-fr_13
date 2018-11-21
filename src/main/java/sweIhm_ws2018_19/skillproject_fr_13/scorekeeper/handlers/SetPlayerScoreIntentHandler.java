@@ -22,10 +22,9 @@ public class SetPlayerScoreIntentHandler implements RequestHandler {
 	}
 
 	public Optional<Response> handle(HandlerInput input) {
-		final Map<String, Object> persistentAttributes = input
+		final Map<String, Long> scoreTable = (Map<String, Long>) input
 				.getAttributesManager()
-				.getPersistentAttributes();
-		final Map<String, Long> scoreTable = (Map<String, Long>) persistentAttributes
+				.getPersistentAttributes()
 				.get("ScoreTable");
 		String response;
 

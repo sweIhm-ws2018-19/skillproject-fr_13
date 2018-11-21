@@ -50,7 +50,7 @@
                         "schreib {Points} punkte für {PlayerName}",
                         "{PlayerName} hat {Points} punkte",
                         "{Points} punkte für {PlayerName}",
-                        "{PlayerName}  {Points} punkte"
+                        "{PlayerName} {Points} punkte"
                     ]
                 },
                 {

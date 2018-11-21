@@ -10,9 +10,9 @@ import com.amazon.ask.model.Response;
 
 public class HelpIntentHandler implements RequestHandler {
 	
-	public static final String HELP_NOSESSION =
+	public static final String NO_SESSION =
 			"Du kannst mich auffordern, eine Spielsitzung zu starten.";
-	public static final String HELP_INSESSION =
+	public static final String IN_SESSION =
 			"Nenne mir den Namen eines Spielteilnehmers und seinen Punktestand " +
 					"oder frage mich nach dem aktuellen Punktestand.";
 	
@@ -25,7 +25,7 @@ public class HelpIntentHandler implements RequestHandler {
 				.getPersistentAttributes().containsKey("ScoreTable");
 	
 		return input.getResponseBuilder()
-				.withSpeech(isGameSessionRunning ? HELP_INSESSION : HELP_NOSESSION)
+				.withSpeech(isGameSessionRunning ? IN_SESSION : NO_SESSION)
 				.withShouldEndSession(false)
 				.build();
 				

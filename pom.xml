@@ -1,11 +1,17 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>sweIhm.ws2018-19</groupId>
-  <artifactId>skillproject.fr.13</artifactId>
-  <packaging>pom</packaging>
-  <version>1.0</version>
-  <name>Skill project Fr 13</name>
+
+  <groupId>sweIhm_ws2018_19.skillproject_fr_13</groupId>
+  <artifactId>scorekeeper</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>ScoreKeeper</name>
+  <url>https://github.com/sweIhm-ws2018-19/skillproject-fr_13</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   
   <licenses>
     <license>
@@ -15,46 +21,88 @@
   </licenses>
   
   <developers>
+  
 	<developer>
 		<name>HoferAnton</name>
 		<url>https://github.com/HoferAnton</url>
 	</developer>
+	
 	<developer>
-		<name>OneToughMonkey</name> <url>https://github.com/OneToughMonkey</url>
+		<name>OneToughMonkey</name>
+		<url>https://github.com/OneToughMonkey</url>
 	</developer>
+	
 	<developer>
 		<name>phiebl</name>
 		<url>https://github.com/phiebl</url>
 	</developer>
+	
 	<developer>
 		<name>Sumarinal</name>
 		<url>https://github.com/hexahepta</url>
 	</developer>
-    <developer>
-      <name>Alexa Skills Kit</name>
-      <email>ask-sdk-java@amazon.com</email>
-      <organization>Alexa</organization>
-      <organizationUrl>http://developer.amazon.com/ask</organizationUrl>
-    </developer>
+	
   </developers>
   
   <scm>
     <connection>scm:git:https://github.com/sweIhm-ws2018-19/skillproject-fr_13.git</connection>
     <developerConnection>scm:git:https://github.com/sweIhm-ws2018-19/skillproject-fr_13.git</developerConnection>
     <url>https://github.com/sweIhm-ws2018-19/skillproject-fr_13.git</url>
+    <tag>HEAD</tag>
   </scm>
 
-  <dependencies>
+<dependencies> 
+
     <dependency>
       <groupId>com.amazon.alexa</groupId>
       <artifactId>ask-sdk</artifactId>
-      <version>2.5.5</version>
+      <version>2.9.0</version>
     </dependency>
-  </dependencies>
-  
-  <modules>
-    <module>ColorPicker</module>
-    <module>ScoreKeeper</module>
-  </modules>
+    
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+</dependencies>
+
+<build>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.7.0</version>
+          <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+            <forceJavacCompilerUse>true</forceJavacCompilerUse>
+          </configuration>
+        </plugin>
+      </plugins>
+	</pluginManagement>
+	
+    <plugins>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <descriptorId>jar-with-dependencies</descriptorId>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase> 
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    
+</build>
 
 </project>

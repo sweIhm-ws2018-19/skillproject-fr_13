@@ -1,7 +1,5 @@
 package sweIhm_ws2018_19.skillproject_fr_13.scorekeeper.handlers;
 
-import static com.amazon.ask.request.Predicates.intentName;
-
 import java.util.Map;
 import java.util.Optional;
 
@@ -11,15 +9,13 @@ import com.amazon.ask.model.IntentRequest;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 
-public class SetPlayerScoreIntentHandler implements RequestHandler {
+public abstract class SetPlayerScoreIntentHandler implements RequestHandler {
 
 	public static final String CONFIRMATION = "%d Punkte für %s gespeichert.";
 	public static final String NO_SESSION = "Du musst zuerst eine Spielsitzung starten.";
 	public static final String REPROMPT = "Ähm... was?";
 
-	public boolean canHandle(HandlerInput input) {
-		return input.matches(intentName("SetPlayerScoreIntent"));
-	}
+	public abstract boolean canHandle(HandlerInput input);
 
 	public Optional<Response> handle(HandlerInput input) {
 		final Map<String, Long> scoreTable = (Map<String, Long>) input
@@ -37,7 +33,7 @@ public class SetPlayerScoreIntentHandler implements RequestHandler {
 						.getSlots();
 				
 				final String playerName = slots.get("PlayerName").getValue();
-				final long points = Long.parseLong(slots.get("Points").getValue());
+				final long points = parsePoints(slots.get("Points").getValue());
 
 				scoreTable.put(playerName, points);
 				input.getAttributesManager().savePersistentAttributes();
@@ -53,5 +49,7 @@ public class SetPlayerScoreIntentHandler implements RequestHandler {
 				.withShouldEndSession(false)
 				.build();
 	}
+	
+	protected abstract Long parsePoints(String points);
 
 }

@@ -18,7 +18,8 @@ public class ScoreKeeperStreamHandler extends SkillStreamHandler {
                        new StartGameSessionIntentHandler(),
                        new EndGameSessionIntentHandler(),
                        new GetPlayerScoresIntentHandler(),
-                       new SetPlayerScoreIntentHandler())
+                       new SetPositivePlayerScoreIntentHandler(),
+                       new SetNegativePlayerScoreIntentHandler())
                 .withTableName("scorekeeper-table")
                 .withAutoCreateTable(true)
                 .build();

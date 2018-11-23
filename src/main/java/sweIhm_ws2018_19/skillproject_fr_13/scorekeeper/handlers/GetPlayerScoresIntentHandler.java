@@ -15,7 +15,7 @@ public class GetPlayerScoresIntentHandler implements RequestHandler {
 	public static final String SCORES = "Der aktuelle Punktestand lautet: %s";
 	public static final String NO_SCORES =
 			"Ich habe noch keinen Punktestand gespeichert.";
-		
+
 	public boolean canHandle(HandlerInput input) {
 		return input.matches(intentName("GetPlayerScoresIntent"));
 	}

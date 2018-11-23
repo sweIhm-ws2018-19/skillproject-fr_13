@@ -22,15 +22,9 @@ public class SetPlayerScoreIntentHandler implements RequestHandler {
 	}
 
 	public Optional<Response> handle(HandlerInput input) {
-		final Map<String, Slot> slots = ((IntentRequest) input.getRequest())
-				.getIntent()
-				.getSlots();
-		final Slot playerNameSlot = slots.get("PlayerName");
-		final Slot pointsSlot = slots.get("Points");
-		final Map<String, Object> persistentAttributes = input
+		final Map<String, Long> scoreTable = (Map<String, Long>) input
 				.getAttributesManager()
-				.getPersistentAttributes();
-		final Map<String, Long> scoreTable = (Map<String, Long>) persistentAttributes
+				.getPersistentAttributes()
 				.get("ScoreTable");
 		String response;
 
@@ -38,8 +32,12 @@ public class SetPlayerScoreIntentHandler implements RequestHandler {
 			response = NO_SESSION;
 		else
 			try {
-				final String playerName = playerNameSlot.getValue();
-				final long points = Long.parseLong(pointsSlot.getValue());
+				final Map<String, Slot> slots = ((IntentRequest) input.getRequest())
+						.getIntent()
+						.getSlots();
+				
+				final String playerName = slots.get("PlayerName").getValue();
+				final long points = Long.parseLong(slots.get("Points").getValue());
 
 				scoreTable.put(playerName, points);
 				input.getAttributesManager().savePersistentAttributes();

@@ -13,6 +13,7 @@ public class ScoreKeeperTestSuite extends TestCase {
 		// scorekeeper
 		suite.addTestSuite(ScoreKeeperStreamHandlerTest.class);
 		// scorekeeper.handlers
+		suite.addTestSuite(StartGameSessionIntentHandlerTest.class);
 		suite.addTestSuite(CancelAndStopIntentHandlerTest.class);
 		suite.addTestSuite(EndGameSessionIntentHandlerTest.class);
 		suite.addTestSuite(GetPlayerScoresIntentHandlerTest.class);

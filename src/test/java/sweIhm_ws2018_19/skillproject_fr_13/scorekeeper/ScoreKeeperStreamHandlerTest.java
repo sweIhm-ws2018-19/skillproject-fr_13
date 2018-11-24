@@ -1,7 +1,9 @@
 package sweIhm_ws2018_19.skillproject_fr_13.scorekeeper;
 
 import org.junit.Test;
+
 import junit.framework.TestCase;
+import com.amazon.ask.servlet.SkillServlet;
 
 public class ScoreKeeperStreamHandlerTest extends TestCase{
 	
@@ -11,7 +13,5 @@ public class ScoreKeeperStreamHandlerTest extends TestCase{
 	public void testEnabled() {
 		assertEquals(true, true);
 	}
-	
-	
 
 }

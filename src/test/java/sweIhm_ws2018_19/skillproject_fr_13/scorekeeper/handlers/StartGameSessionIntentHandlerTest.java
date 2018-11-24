@@ -1,5 +1,7 @@
 package sweIhm_ws2018_19.skillproject_fr_13.scorekeeper.handlers;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 import junit.framework.TestCase;
 

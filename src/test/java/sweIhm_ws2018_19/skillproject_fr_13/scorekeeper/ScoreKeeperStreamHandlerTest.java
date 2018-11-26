@@ -1,117 +1,89 @@
 package sweIhm_ws2018_19.skillproject_fr_13.scorekeeper;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-//<https://github.com/alexa/alexa-skills-kit-sdk-for-java/blob/2.0.x/ask-sdk-lambda-support/tst/com/amazon/ask/SkillStreamHandlerTest.java>
-
-import com.amazon.ask.*;
-
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.Charset;
-import java.util.Objects;
+import java.io.OutputStream;
 
-import com.amazon.ask.exception.AskSdkException;
-import com.amazon.ask.request.SkillRequest;
-import com.amazon.ask.response.SkillResponse;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
+import org.junit.Before;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
+import org.mockito.InjectMocks;
+import org.mockito.MockitoAnnotations;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
+import com.amazon.ask.SkillStreamHandler;
+import com.amazonaws.services.lambda.runtime.Context;
+
+
 
 class ScoreKeeperStreamHandlerTest {
 
-	private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-	private TestRequest testRequest;
-	private TestResponse testResponse;
-	private SkillResponse<TestResponse> skillResponse;
-
-	private AlexaSkill<TestRequest, TestResponse> skill;
-
-	@BeforeEach
-	public void setup() {
-		skill = mock(AlexaSkill.class);
-		testRequest = new TestRequest();
-		testRequest.setRequest("request");
-		testResponse = new TestResponse();
-		testResponse.setResponse("response");
-		skillResponse = mock(SkillResponse.class);
-	}
-
-	@Test
-	public void null_skill_throws_exception() {
-		new ScoreKeeperStreamHandler();
-	}
-
+	
 	@Test
 	public void testEnabled() {
 		assertEquals(true, true);
 	}
-
-	private class TestRequest {
-
-		private String request;
-
-		public String getRequest() {
-			return request;
-		}
-
-		public void setRequest(String request) {
-			this.request = request;
-		}
-
+	
+	@InjectMocks
+	private SkillStreamHandler scoreKeeperHandlerMock; 
+	
+	@Captor
+	private ArgumentCaptor<InputStream> inputStreamArg;
+	@Captor
+	private ArgumentCaptor<OutputStream> outputStreamArg;
+	@Captor
+	private ArgumentCaptor<Context> contextArg;
+	
+	@Before
+	public void setup(){
+		MockitoAnnotations.initMocks(this);
+	}
+	
+	@Test
+	public void test() throws IOException{
+		verify(scoreKeeperHandlerMock).handleRequest(inputStreamArg.capture(), outputStreamArg.capture(), contextArg.capture());
+		scoreKeeperHandlerMock.handleRequest(null, null, null);
 	}
 
-	private class TestResponse {
+	
+	// tests from original java sdk
+{
 
-		private String response;
-
-		public String getResponse() {
-			return response;
-		}
-
-		public void setResponse(String response) {
-			this.response = response;
-		}
-
+//	private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+//	private AlexaSkill<RequestEnvelope, ResponseEnvelope> skill;
+//	
+//	@Before
+//	public void setup() {
+//		skill = mock(AlexaSkill.class);
+//	}
+//	
+//	@Test
+//	public void null_skill_throws_exception() {
+//		assertThrows(IllegalArgumentException.class, () -> {new TestSkillStreamHandler((AlexaSkill)null);});
+//	}
+//	
+//	private String getHandlerOutput(Object envelope) throws IOException{
+//		byte[] json = OBJECT_MAPPER.writeValueAsBytes(envelope);
+//		InputStream is = new ByteArrayInputStream(json);
+//		ByteArrayOutputStream os = new ByteArrayOutputStream();
+//		
+//		SkillStreamHandler streamHandler = new TestSkillStreamHandler(skill);
+//		streamHandler.handleRequest(is, os, null);
+//		String output = new String(os.toByteArray(), Charset.defaultCharset());
+//		return output;
+//	}
+//	
+//	private final class TestSkillStreamHandler extends SkillStreamHandler{
+//		public TestSkillStreamHandler(AlexaSkill skill) {
+//			super(skill);
+//		}
+//		
+//		public TestSkillStreamHandler(AlexaSkill... skills) {
+//			super(skills);
+//		}
+//	}
 	}
-
-	private final class TestSkillStreamHandler extends SkillStreamHandler {
-		public TestSkillStreamHandler(AlexaSkill skill) {
-			super(skill);
-		}
-
-		public TestSkillStreamHandler(AlexaSkill... skills) {
-			super(skills);
-		}
-	}
-
-	private String getHandlerOutput(Object envelope) throws IOException {
-		byte[] json = OBJECT_MAPPER.writeValueAsBytes(envelope);
-		InputStream is = new ByteArrayInputStream(json);
-		ByteArrayOutputStream os = new ByteArrayOutputStream();
-
-		SkillStreamHandler streamHandler = new TestSkillStreamHandler(skill);
-
-		streamHandler.handleRequest(is, os, null);
-		String output = new String(os.toByteArray(), Charset.defaultCharset());
-		return output;
-	}
-
-
 }

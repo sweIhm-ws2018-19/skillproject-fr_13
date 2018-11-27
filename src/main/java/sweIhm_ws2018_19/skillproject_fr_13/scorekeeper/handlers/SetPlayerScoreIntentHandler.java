@@ -15,8 +15,6 @@ public abstract class SetPlayerScoreIntentHandler implements RequestHandler {
 	public static final String NO_SESSION = "Du musst zuerst eine Spielsitzung starten.";
 	public static final String REPROMPT = "Ähm... was?";
 
-	public abstract boolean canHandle(HandlerInput input);
-
 	public Optional<Response> handle(HandlerInput input) {
 		final Map<String, Long> scoreTable = (Map<String, Long>) input
 				.getAttributesManager()
@@ -31,7 +29,7 @@ public abstract class SetPlayerScoreIntentHandler implements RequestHandler {
 				final Map<String, Slot> slots = ((IntentRequest) input.getRequest())
 						.getIntent()
 						.getSlots();
-				
+
 				final String playerName = slots.get("PlayerName").getValue();
 				final long points = parsePoints(slots.get("Points").getValue());
 
@@ -49,7 +47,7 @@ public abstract class SetPlayerScoreIntentHandler implements RequestHandler {
 				.withShouldEndSession(false)
 				.build();
 	}
-	
+
 	protected abstract Long parsePoints(String points);
 
 }

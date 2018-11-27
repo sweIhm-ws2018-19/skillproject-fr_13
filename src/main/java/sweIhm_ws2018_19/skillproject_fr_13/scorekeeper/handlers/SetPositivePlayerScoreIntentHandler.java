@@ -12,7 +12,7 @@ public class SetPositivePlayerScoreIntentHandler extends SetPlayerScoreIntentHan
 	}
 	
 	@Override
-	protected Long parsePoints(String points) {
+	protected Long parsePoints(String points) throws NumberFormatException {
 		return Long.parseLong(points);
 	}
 

@@ -32,7 +32,6 @@ public class EndGameSessionIntentHandlerTest {
 		assertEquals(true, true);
 	}
 
-	/*
 	private HandlerInput inputMock;
 
 	@BeforeEach
@@ -91,6 +90,5 @@ public class EndGameSessionIntentHandlerTest {
 		assertTrue(response.isPresent());
 		assertFalse(response.get().getShouldEndSession());
 	}
-	*/
 	
 }

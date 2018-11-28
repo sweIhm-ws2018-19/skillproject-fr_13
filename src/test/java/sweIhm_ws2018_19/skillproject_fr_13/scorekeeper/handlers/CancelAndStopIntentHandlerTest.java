@@ -28,7 +28,7 @@ public class CancelAndStopIntentHandlerTest {
 		assertEquals(true, true);
 	}
 	
-	/*
+	
 	private HandlerInput inputMock;
 	
 	@BeforeEach
@@ -50,7 +50,7 @@ public class CancelAndStopIntentHandlerTest {
 	}
 
 	@Test
-	public void test_handle() {
+	public void test_handleCancelAndStop() {
 		
 		RequestHandler sut = new CancelAndStopIntentHandler();
 		final ResponseBuilder responseBuilder = new ResponseBuilder();
@@ -59,5 +59,5 @@ public class CancelAndStopIntentHandlerTest {
 		assertTrue(response.isPresent());
 		assertTrue(response.get().getShouldEndSession());
 	}
-	*/
+	
 }

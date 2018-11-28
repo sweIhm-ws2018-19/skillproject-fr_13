@@ -8,6 +8,7 @@ import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.IntentRequest;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
+import com.amazon.ask.response.ResponseBuilder;
 
 public abstract class SetPlayerScoreIntentHandler implements RequestHandler {
 
@@ -20,10 +21,10 @@ public abstract class SetPlayerScoreIntentHandler implements RequestHandler {
 				.getAttributesManager()
 				.getPersistentAttributes()
 				.get("ScoreTable");
-		String response;
+		ResponseBuilder responseBuilder = input.getResponseBuilder();
 
 		if (scoreTable == null)
-			response = NO_SESSION;
+			responseBuilder.withSpeech(NO_SESSION);
 		else
 			try {
 				final Map<String, Slot> slots = ((IntentRequest) input.getRequest())
@@ -36,14 +37,14 @@ public abstract class SetPlayerScoreIntentHandler implements RequestHandler {
 				scoreTable.put(playerName, points);
 				input.getAttributesManager().savePersistentAttributes();
 
-				response = String.format(CONFIRMATION, points, playerName);
+				responseBuilder
+					.withSpeech(String.format(CONFIRMATION, points, playerName));
 
 			} catch (NullPointerException | NumberFormatException e) {
-				response = REPROMPT;
+				responseBuilder.withReprompt(REPROMPT);
 			}
 
-		return input.getResponseBuilder()
-				.withSpeech(response)
+		return responseBuilder
 				.withShouldEndSession(false)
 				.build();
 	}

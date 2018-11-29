@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import com.amazon.ask.response.ResponseBuilder;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import static org.mockito.Mockito.mock;

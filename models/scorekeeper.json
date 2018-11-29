@@ -23,6 +23,7 @@
                     "name": "StartGameSessionIntent",
                     "slots": [],
                     "samples": [
+                        "los",
                         "los geht's",
                         "spiel starten",
                         "neues spiel",
@@ -30,11 +31,14 @@
                         "starte ein spiel",
                         "ich will spielen",
                         "lass uns spielen",
-                        "du schreibst"
+                        "du schreibst",
+                        "spiel start",
+                        "spielstart",
+                        "spiel starten"
                     ]
                 },
                 {
-                    "name": "SetPlayerScoreIntent",
+                    "name": "SetPositivePlayerScoreIntent",
                     "slots": [
                         {
                             "name": "PlayerName",
@@ -54,18 +58,46 @@
                     ]
                 },
                 {
+                    "name": "SetNegativePlayerScoreIntent",
+                    "slots": [
+                        {
+                            "name": "PlayerName",
+                            "type": "AMAZON.DE_FIRST_NAME"
+                        },
+                        {
+                            "name": "Points",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "{PlayerName} {Points} punkte minus",
+                        "{Points} punkte minus für {PlayerName}",
+                        "{PlayerName} hat {Points} punkte minus",
+                        "schreib {Points} punkte minus für {PlayerName}",
+                        "merk dir {Points} punkte minus für {PlayerName}",
+                        "merk dir minus {Points} punkte für {PlayerName}",
+                        "schreib minus {Points} punkte für {PlayerName}",
+                        "{PlayerName} hat minus {Points} punkte",
+                        "minus {Points} punkte für {PlayerName}",
+                        "{PlayerName} minus {Points} punkte"
+                    ]
+                },
+                {
                     "name": "GetPlayerScoresIntent",
                     "slots": [],
                     "samples": [
+                        "punktestand ausgeben",
                         "sag mir den punktestand",
                         "punktestand",
                         "was ist der punktestand",
-                        "wieviel steht es",
+                        "wie viel steht es",
+                        "wie stehen die punkte",
                         "wie lautet der punktestand",
                         "lies mir die punkte vor",
                         "lies mir den punktestand vor",
                         "sag mir die punkte",
-                        "punktestand ausgeben"
+                        "was ist der aktuelle punktestand",
+                        "wie lautet der aktuelle punktestand"
                     ]
                 },
                 {

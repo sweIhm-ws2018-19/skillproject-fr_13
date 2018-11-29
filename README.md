@@ -2,7 +2,7 @@
 
 Score Keeper ist ein Alexa Skill, welcher zur Punkte Verwaltung zahlreicher Gesellschaftsspiele dient. Es können dabei mehrere Mitspielern erstellt und deren Punkte innerhalb einer Spielsitzung verwaltet werden.
 
-Sprachbefehle die von einem Alexa fähgien Gerät akzeptiert werden, sind an der natürlichen Sprache angelehnt und ermöglichen es den Spielfluss in netter Gesellschaft aufrecht zu erhalten.
+Sprachbefehle die von einem Alexa fähigen Gerät akzeptiert werden, sind an der natürlichen Sprache angelehnt und ermöglichen es den Spielfluss in netter Gesellschaft aufrecht zu erhalten.
 
 Beispiele für solche Befehle sind:
 - "Lass uns spielen."

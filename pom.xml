@@ -1,108 +1,126 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>sweIhm_ws2018_19.skillproject_fr_13</groupId>
-  <artifactId>scorekeeper</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+	<groupId>edu.hm.skillproject_fr_13</groupId>
+	<artifactId>scorekeeper</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-  <name>ScoreKeeper</name>
-  <url>https://github.com/sweIhm-ws2018-19/skillproject-fr_13</url>
+	<name>ScoreKeeper</name>
+	<url>https://github.com/sweIhm-ws2018-19/skillproject-fr_13</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  
-  <licenses>
-    <license>
-      <name>The Apache License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-    </license>
-  </licenses>
-  
-  <developers>
-  
-	<developer>
-		<name>HoferAnton</name>
-		<url>https://github.com/HoferAnton</url>
-	</developer>
-	
-	<developer>
-		<name>OneToughMonkey</name>
-		<url>https://github.com/OneToughMonkey</url>
-	</developer>
-	
-	<developer>
-		<name>phiebl</name>
-		<url>https://github.com/phiebl</url>
-	</developer>
-	
-	<developer>
-		<name>Sumarinal</name>
-		<url>https://github.com/hexahepta</url>
-	</developer>
-	
-  </developers>
-  
-  <scm>
-    <connection>scm:git:https://github.com/sweIhm-ws2018-19/skillproject-fr_13.git</connection>
-    <developerConnection>scm:git:https://github.com/sweIhm-ws2018-19/skillproject-fr_13.git</developerConnection>
-    <url>https://github.com/sweIhm-ws2018-19/skillproject-fr_13.git</url>
-    <tag>HEAD</tag>
-  </scm>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
-<dependencies> 
+	<licenses>
+		<license>
+			<name>The Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
 
-    <dependency>
-      <groupId>com.amazon.alexa</groupId>
-      <artifactId>ask-sdk</artifactId>
-      <version>2.9.0</version>
-    </dependency>
-    
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    
-</dependencies>
+	<developers>
 
-<build>
+		<developer>
+			<name>HoferAnton</name>
+			<url>https://github.com/HoferAnton</url>
+		</developer>
 
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.7.0</version>
-          <configuration>
-            <source>1.8</source>
-            <target>1.8</target>
-            <forceJavacCompilerUse>true</forceJavacCompilerUse>
-          </configuration>
-        </plugin>
-      </plugins>
-	</pluginManagement>
-	
-    <plugins>
-      <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.6</version>
-        <configuration>
-          <descriptorId>jar-with-dependencies</descriptorId>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>package</phase> 
-            <goals>
-              <goal>single</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-    
-</build>
+		<developer>
+			<name>OneToughMonkey</name>
+			<url>https://github.com/OneToughMonkey</url>
+		</developer>
+
+		<developer>
+			<name>phiebl</name>
+			<url>https://github.com/phiebl</url>
+		</developer>
+
+		<developer>
+			<name>Sumarinal</name>
+			<url>https://github.com/hexahepta</url>
+		</developer>
+
+	</developers>
+
+	<scm>
+		<connection>scm:git:https://github.com/sweIhm-ws2018-19/skillproject-fr_13.git</connection>
+		<developerConnection>scm:git:https://github.com/sweIhm-ws2018-19/skillproject-fr_13.git</developerConnection>
+		<url>https://github.com/sweIhm-ws2018-19/skillproject-fr_13.git</url>
+		<tag>HEAD</tag>
+	</scm>
+
+	<dependencies>
+
+		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.19</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.amazon.alexa</groupId>
+			<artifactId>ask-sdk</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.3.1</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+
+		<pluginManagement>
+			<plugins>
+			
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.8.0</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+						<forceJavacCompilerUse>true</forceJavacCompilerUse>
+					</configuration>
+				</plugin>
+				
+				<!-- JUnit 5 requires Surefire version 2.22.0 or higher -->
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>3.0.0-M1</version>
+				</plugin>
+				
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<descriptorId>jar-with-dependencies</descriptorId>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+	</build>
 
 </project>

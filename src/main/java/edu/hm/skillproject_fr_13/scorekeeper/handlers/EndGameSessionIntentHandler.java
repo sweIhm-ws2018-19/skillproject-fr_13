@@ -1,4 +1,4 @@
-package sweIhm_ws2018_19.skillproject_fr_13.scorekeeper.handlers;
+package edu.hm.skillproject_fr_13.scorekeeper.handlers;
 
 import static com.amazon.ask.request.Predicates.intentName;
 
@@ -27,7 +27,8 @@ public class EndGameSessionIntentHandler implements RequestHandler {
 			persistentAttributes.remove("ScoreTable");
 			input.getAttributesManager().savePersistentAttributes();
 			response = CONFIRMATION;
-		} else
+		}
+		else
 			response = NO_SESSION;
 
 		return input.getResponseBuilder()

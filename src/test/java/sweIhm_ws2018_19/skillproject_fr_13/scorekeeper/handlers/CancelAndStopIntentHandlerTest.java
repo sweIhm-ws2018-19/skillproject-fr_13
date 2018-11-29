@@ -50,7 +50,7 @@ public class CancelAndStopIntentHandlerTest {
 	}
 
 	@Test
-	public void test_handleCancelAndStop() {
+	public void test_HandleCancelAndStop() {
 		
 		RequestHandler sut = new CancelAndStopIntentHandler();
 		final ResponseBuilder responseBuilder = new ResponseBuilder();

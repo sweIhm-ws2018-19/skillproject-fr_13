@@ -1,7 +1,6 @@
-package skillproject_fr_13.scorekeeper.handlers;
+package skillproject_fr13.scorekeeper.handlers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
@@ -17,48 +16,45 @@ import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.response.ResponseBuilder;
 
-import skillproject_fr_13.scorekeeper.handlers.SessionEndedRequestHandler;
+import skillproject_fr13.scorekeeper.handlers.CancelAndStopIntentHandler;
 
 
-public class SessionEndedRequestHandlerTest {
-
+public class CancelAndStopIntentHandlerTest {
+	
 	@Test
-	public void testEnabled() {
+	public void test_Enabled() {
 		assertEquals(true, true);
 	}
-
+	
 	private HandlerInput inputMock;
-
+	
 	@BeforeEach
 	public void setup() {
 		inputMock = mock(HandlerInput.class);
 	}
-
+	
 	@Test
 	public void test_Ctor() {
-		Object sut = new SessionEndedRequestHandler();
-		assertEquals(sut.getClass(), SessionEndedRequestHandler.class);
+		Object sut = new CancelAndStopIntentHandler();
+		assertEquals(sut.getClass(), CancelAndStopIntentHandler.class);
 	}
 
 	@Test
 	public void test_CanHandle() {
-		RequestHandler sut = new SessionEndedRequestHandler();
+		RequestHandler sut = new CancelAndStopIntentHandler();
 		when(inputMock.matches(any())).thenReturn(true);
 		assertTrue(sut.canHandle(inputMock));
 	}
 
 	@Test
-	public void test_NullHandle() {
-		RequestHandler sut = new SessionEndedRequestHandler();
-		assertThrows(NullPointerException.class, () -> sut.handle(null));
-	}
-	
-	@Test
-	public void test_EmptyScoreTable() {
-		RequestHandler sut = new SessionEndedRequestHandler();
-		when(inputMock.getResponseBuilder()).thenReturn(new ResponseBuilder());
-
+	public void test_HandleCancelAndStop() {
+		
+		RequestHandler sut = new CancelAndStopIntentHandler();
+		final ResponseBuilder responseBuilder = new ResponseBuilder();
+		when(inputMock.getResponseBuilder()).thenReturn(responseBuilder);
 		Optional<Response> response = sut.handle(inputMock);
 		assertTrue(response.isPresent());
+		assertTrue(response.get().getShouldEndSession());
 	}
+	
 }

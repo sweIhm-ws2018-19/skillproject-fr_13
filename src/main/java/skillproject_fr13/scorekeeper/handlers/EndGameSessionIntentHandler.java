@@ -1,4 +1,4 @@
-package skillproject_fr_13.scorekeeper.handlers;
+package skillproject_fr13.scorekeeper.handlers;
 
 import static com.amazon.ask.request.Predicates.intentName;
 

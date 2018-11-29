@@ -1,4 +1,4 @@
-package skillproject_fr_13.scorekeeper.handlers;
+package skillproject_fr13.scorekeeper.handlers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -24,7 +24,7 @@ import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 import com.amazon.ask.response.ResponseBuilder;
 
-import skillproject_fr_13.scorekeeper.handlers.SetNegativePlayerScoreIntentHandler;
+import skillproject_fr13.scorekeeper.handlers.SetNegativePlayerScoreIntentHandler;
 
 
 public class SetNegativePlayerScoreIntentHandlerTest {

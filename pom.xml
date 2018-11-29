@@ -1,126 +1,132 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>edu.hm.skillproject_fr_13</groupId>
-	<artifactId>scorekeeper</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+    <groupId>edu.hm.skillproject_fr_13</groupId>
+    <artifactId>scorekeeper</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-	<name>ScoreKeeper</name>
-	<url>https://github.com/sweIhm-ws2018-19/skillproject-fr_13</url>
+    <name>ScoreKeeper</name>
+    <url>https://github.com/sweIhm-ws2018-19/skillproject-fr_13</url>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-	<licenses>
-		<license>
-			<name>The Apache License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-		</license>
-	</licenses>
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
 
-	<developers>
+    <developers>
 
-		<developer>
-			<name>HoferAnton</name>
-			<url>https://github.com/HoferAnton</url>
-		</developer>
+        <developer>
+            <name>HoferAnton</name>
+            <url>https://github.com/HoferAnton</url>
+        </developer>
 
-		<developer>
-			<name>OneToughMonkey</name>
-			<url>https://github.com/OneToughMonkey</url>
-		</developer>
+        <developer>
+            <name>OneToughMonkey</name>
+            <url>https://github.com/OneToughMonkey</url>
+        </developer>
 
-		<developer>
-			<name>phiebl</name>
-			<url>https://github.com/phiebl</url>
-		</developer>
+        <developer>
+            <name>phiebl</name>
+            <url>https://github.com/phiebl</url>
+        </developer>
 
-		<developer>
-			<name>Sumarinal</name>
-			<url>https://github.com/hexahepta</url>
-		</developer>
+        <developer>
+            <name>Sumarinal</name>
+            <url>https://github.com/hexahepta</url>
+        </developer>
 
-	</developers>
+    </developers>
 
-	<scm>
-		<connection>scm:git:https://github.com/sweIhm-ws2018-19/skillproject-fr_13.git</connection>
-		<developerConnection>scm:git:https://github.com/sweIhm-ws2018-19/skillproject-fr_13.git</developerConnection>
-		<url>https://github.com/sweIhm-ws2018-19/skillproject-fr_13.git</url>
-		<tag>HEAD</tag>
-	</scm>
+    <scm>
+        <connection>scm:git:https://github.com/sweIhm-ws2018-19/skillproject-fr_13.git</connection>
+        <developerConnection>scm:git:https://github.com/sweIhm-ws2018-19/skillproject-fr_13.git</developerConnection>
+        <url>https://github.com/sweIhm-ws2018-19/skillproject-fr_13.git</url>
+        <tag>HEAD</tag>
+    </scm>
 
-	<dependencies>
+    <dependencies>
 
-		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>1.10.19</version>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.10.19</version>
+            <scope>test</scope>
+        </dependency>
 
-		<dependency>
-			<groupId>com.amazon.alexa</groupId>
-			<artifactId>ask-sdk</artifactId>
-			<version>2.9.0</version>
-		</dependency>
+        <dependency>
+            <groupId>com.amazon.alexa</groupId>
+            <artifactId>ask-sdk</artifactId>
+            <version>2.9.0</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.3.1</version>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.3.1</version>
+            <scope>test</scope>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 
-	<build>
+    <build>
 
-		<pluginManagement>
-			<plugins>
-			
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.8.0</version>
-					<configuration>
-						<source>1.8</source>
-						<target>1.8</target>
-						<forceJavacCompilerUse>true</forceJavacCompilerUse>
-					</configuration>
-				</plugin>
-				
-				<!-- JUnit 5 requires Surefire version 2.22.0 or higher -->
-				<plugin>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>3.0.0-M1</version>
-				</plugin>
-				
-			</plugins>
-		</pluginManagement>
+        <pluginManagement>
+            <plugins>
 
-		<plugins>
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<descriptorId>jar-with-dependencies</descriptorId>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.0</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                        <forceJavacCompilerUse>true</forceJavacCompilerUse>
+                    </configuration>
+                </plugin>
 
-	</build>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M1</version>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <descriptorId>jar-with-dependencies</descriptorId>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+            </plugin>
+
+        </plugins>
+
+    </build>
 
 </project>

@@ -11,4 +11,4 @@ Beispiele für solche Befehle sind:
 - "Spiel ende"
 
 Dieses Softwareprojekt ist im Zuge des Praktikums für Softwareengineering als studentisches Projekt der Hochschule München entstanden.
-Der Alexa Skill kann momentan Spielern Datenwerte zuordnen, die Datenwerte für die Spieler speichern und die gespeicherten Daten wieder in Form von Sprachnachrichten ausgeben. In den kommenden Erweiterungen dieses Softwareprojekts wird dieses um weitere Features ergänzt.
+Der Alexa Skill kann momentan Spielern Datenwerte zuordnen, die Datenwerte für die Spieler speichern und die gespeicherten Daten wieder in Form von Sprachnachrichten ausgeben. In den kommenden Erweiterungen dieses Softwareprojekts wird der Skill um weitere Features ergänzt.

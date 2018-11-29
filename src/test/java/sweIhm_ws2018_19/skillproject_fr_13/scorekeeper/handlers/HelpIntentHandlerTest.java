@@ -10,7 +10,6 @@ import static org.mockito.Mockito.when;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Predicate;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -45,7 +44,7 @@ public class HelpIntentHandlerTest {
 	@Test
 	public void test_CanHandle() {
 		RequestHandler sut = new HelpIntentHandler();
-		when(inputMock.matches(any(Predicate.class))).thenReturn(true);
+		when(inputMock.matches(any())).thenReturn(true);
 		assertTrue(sut.canHandle(inputMock));
 	}
 	

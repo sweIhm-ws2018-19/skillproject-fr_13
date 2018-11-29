@@ -8,7 +8,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.util.Optional;
-import java.util.function.Predicate;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -42,7 +41,7 @@ public class SessionEndedRequestHandlerTest {
 	@Test
 	public void test_CanHandle() {
 		RequestHandler sut = new SessionEndedRequestHandler();
-		when(inputMock.matches(any(Predicate.class))).thenReturn(true);
+		when(inputMock.matches(any())).thenReturn(true);
 		assertTrue(sut.canHandle(inputMock));
 	}
 

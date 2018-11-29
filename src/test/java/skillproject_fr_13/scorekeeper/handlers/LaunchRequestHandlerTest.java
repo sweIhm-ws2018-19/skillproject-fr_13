@@ -1,7 +1,8 @@
-package sweIhm_ws2018_19.skillproject_fr_13.scorekeeper.handlers;
+package skillproject_fr_13.scorekeeper.handlers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
@@ -20,16 +21,18 @@ import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.response.ResponseBuilder;
 
+import skillproject_fr_13.scorekeeper.handlers.LaunchRequestHandler;
 
-public class HelpIntentHandlerTest {
-	
+
+public class LaunchRequestHandlerTest {
+
 	@Test
 	public void testEnabled() {
 		assertEquals(true, true);
 	}
 
 	private HandlerInput inputMock;
-	
+
 	@BeforeEach
 	public void setup() {
 		inputMock = mock(HandlerInput.class);
@@ -37,23 +40,29 @@ public class HelpIntentHandlerTest {
 
 	@Test
 	public void test_Ctor() {
-		Object sut = new HelpIntentHandler();
-		assertEquals(sut.getClass(), HelpIntentHandler.class);
+		Object sut = new LaunchRequestHandler();
+		assertEquals(sut.getClass(), LaunchRequestHandler.class);
 	}
 
 	@Test
 	public void test_CanHandle() {
-		RequestHandler sut = new HelpIntentHandler();
+		RequestHandler sut = new LaunchRequestHandler();
 		when(inputMock.matches(any())).thenReturn(true);
 		assertTrue(sut.canHandle(inputMock));
 	}
+
+	@Test
+	public void test_NullHandle() {
+		RequestHandler sut = new LaunchRequestHandler();
+		assertThrows(NullPointerException.class, () -> sut.handle(null));
+	}
 	
 	@Test
-	public void test_ExistingScoreTable() {
-		RequestHandler sut = new HelpIntentHandler();
+	public void test_EmptyScoreTable() {
+		RequestHandler sut = new LaunchRequestHandler();
 		AttributesManager attributeManager = mock(AttributesManager.class);
 		Map<String, Object> persistentAttributes = new HashMap<String, Object>();
-		persistentAttributes.put("ScoreTable", new HashMap<String, Long>());
+		persistentAttributes.put("ScoreTable", new HashMap<String, Object>());
 
 		when(inputMock.getAttributesManager()).thenReturn(attributeManager);
 		when(attributeManager.getPersistentAttributes()).thenReturn(persistentAttributes);
@@ -65,8 +74,8 @@ public class HelpIntentHandlerTest {
 	}
 	
 	@Test
-	public void test_NonExistentScoreTable() {
-		RequestHandler sut = new HelpIntentHandler();
+	public void test_NoScoreTable() {
+		RequestHandler sut = new LaunchRequestHandler();
 		AttributesManager attributeManager = mock(AttributesManager.class);
 		Map<String, Object> persistentAttributes = new HashMap<String, Object>();
 

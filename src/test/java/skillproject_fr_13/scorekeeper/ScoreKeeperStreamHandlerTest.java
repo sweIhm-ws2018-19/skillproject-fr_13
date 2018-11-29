@@ -1,4 +1,4 @@
-package sweIhm_ws2018_19.skillproject_fr_13.scorekeeper;
+package skillproject_fr_13.scorekeeper;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

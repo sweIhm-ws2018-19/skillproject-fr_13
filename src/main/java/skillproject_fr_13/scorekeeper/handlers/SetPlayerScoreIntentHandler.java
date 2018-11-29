@@ -1,4 +1,4 @@
-package sweIhm_ws2018_19.skillproject_fr_13.scorekeeper.handlers;
+package skillproject_fr_13.scorekeeper.handlers;
 
 import java.util.Map;
 import java.util.Optional;

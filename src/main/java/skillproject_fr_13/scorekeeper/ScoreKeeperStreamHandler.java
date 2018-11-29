@@ -1,12 +1,18 @@
-package sweIhm_ws2018_19.skillproject_fr_13.scorekeeper;
+package skillproject_fr_13.scorekeeper;
 
 import com.amazon.ask.Skill;
 import com.amazon.ask.SkillStreamHandler;
 import com.amazon.ask.Skills;
-import com.amazon.ask.builder.CustomSkillConfiguration;
-import com.amazonaws.regions.Region;
 
-import sweIhm_ws2018_19.skillproject_fr_13.scorekeeper.handlers.*;
+import skillproject_fr_13.scorekeeper.handlers.CancelAndStopIntentHandler;
+import skillproject_fr_13.scorekeeper.handlers.EndGameSessionIntentHandler;
+import skillproject_fr_13.scorekeeper.handlers.GetPlayerScoresIntentHandler;
+import skillproject_fr_13.scorekeeper.handlers.HelpIntentHandler;
+import skillproject_fr_13.scorekeeper.handlers.LaunchRequestHandler;
+import skillproject_fr_13.scorekeeper.handlers.SessionEndedRequestHandler;
+import skillproject_fr_13.scorekeeper.handlers.SetNegativePlayerScoreIntentHandler;
+import skillproject_fr_13.scorekeeper.handlers.SetPositivePlayerScoreIntentHandler;
+import skillproject_fr_13.scorekeeper.handlers.StartGameSessionIntentHandler;
 
 public class ScoreKeeperStreamHandler extends SkillStreamHandler {
 	

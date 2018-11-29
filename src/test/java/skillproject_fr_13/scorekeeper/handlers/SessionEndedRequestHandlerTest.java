@@ -1,4 +1,4 @@
-package sweIhm_ws2018_19.skillproject_fr_13.scorekeeper.handlers;
+package skillproject_fr_13.scorekeeper.handlers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -16,6 +16,8 @@ import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.response.ResponseBuilder;
+
+import skillproject_fr_13.scorekeeper.handlers.SessionEndedRequestHandler;
 
 
 public class SessionEndedRequestHandlerTest {

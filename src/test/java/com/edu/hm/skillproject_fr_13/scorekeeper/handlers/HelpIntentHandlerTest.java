@@ -1,8 +1,7 @@
-package skillproject_fr13.scorekeeper.handlers;
+package com.edu.hm.skillproject_fr_13.scorekeeper.handlers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
@@ -20,18 +19,18 @@ import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.response.ResponseBuilder;
+import com.edu.hm.skillproject_fr_13.scorekeeper.handlers.HelpIntentHandler;
 
-import skillproject_fr13.scorekeeper.handlers.EndGameSessionIntentHandler;
 
-public class EndGameSessionIntentHandlerTest {
-
+public class HelpIntentHandlerTest {
+	
 	@Test
 	public void testEnabled() {
 		assertEquals(true, true);
 	}
 
 	private HandlerInput inputMock;
-
+	
 	@BeforeEach
 	public void setup() {
 		inputMock = mock(HandlerInput.class);
@@ -39,54 +38,45 @@ public class EndGameSessionIntentHandlerTest {
 
 	@Test
 	public void test_Ctor() {
-		Object sut = new EndGameSessionIntentHandler();
-		assertEquals(sut.getClass(), EndGameSessionIntentHandler.class);
+		Object sut = new HelpIntentHandler();
+		assertEquals(sut.getClass(), HelpIntentHandler.class);
 	}
 
 	@Test
 	public void test_CanHandle() {
+		RequestHandler sut = new HelpIntentHandler();
 		when(inputMock.matches(any())).thenReturn(true);
-		RequestHandler sut = new EndGameSessionIntentHandler();
 		assertTrue(sut.canHandle(inputMock));
 	}
-
+	
 	@Test
-	public void test_HandleNull() {
-		RequestHandler sut = new EndGameSessionIntentHandler();
-		assertThrows(NullPointerException.class, () -> {
-			sut.handle(null);
-		});
-	}
+	public void test_ExistingScoreTable() {
+		RequestHandler sut = new HelpIntentHandler();
+		AttributesManager attributeManager = mock(AttributesManager.class);
+		Map<String, Object> persistentAttributes = new HashMap<String, Object>();
+		persistentAttributes.put("ScoreTable", new HashMap<String, Long>());
 
-	@Test
-	public void test_HandleMock() {
-		RequestHandler sut = new EndGameSessionIntentHandler();
-
-		AttributesManager attrMock = mock(AttributesManager.class);
-		when(attrMock.getPersistentAttributes()).thenReturn(new HashMap<>());
-		when(inputMock.getAttributesManager()).thenReturn(attrMock);
-
+		when(inputMock.getAttributesManager()).thenReturn(attributeManager);
+		when(attributeManager.getPersistentAttributes()).thenReturn(persistentAttributes);
 		when(inputMock.getResponseBuilder()).thenReturn(new ResponseBuilder());
+
 		Optional<Response> response = sut.handle(inputMock);
 		assertTrue(response.isPresent());
 		assertFalse(response.get().getShouldEndSession());
 	}
 	
 	@Test
-	public void test_HandleMockCorrect() {
-		RequestHandler sut = new EndGameSessionIntentHandler();
+	public void test_NonExistentScoreTable() {
+		RequestHandler sut = new HelpIntentHandler();
+		AttributesManager attributeManager = mock(AttributesManager.class);
+		Map<String, Object> persistentAttributes = new HashMap<String, Object>();
 
-		AttributesManager attrMock = mock(AttributesManager.class);
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("ScoreTable", null);
-		
-		when(attrMock.getPersistentAttributes()).thenReturn(map);
-		when(inputMock.getAttributesManager()).thenReturn(attrMock);
+		when(inputMock.getAttributesManager()).thenReturn(attributeManager);
+		when(attributeManager.getPersistentAttributes()).thenReturn(persistentAttributes);
 		when(inputMock.getResponseBuilder()).thenReturn(new ResponseBuilder());
-		
+
 		Optional<Response> response = sut.handle(inputMock);
 		assertTrue(response.isPresent());
 		assertFalse(response.get().getShouldEndSession());
 	}
-	
 }

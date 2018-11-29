@@ -1,18 +1,17 @@
-package skillproject_fr13.scorekeeper;
+package com.edu.hm.skillproject_fr_13.scorekeeper;
 
 import com.amazon.ask.Skill;
 import com.amazon.ask.SkillStreamHandler;
 import com.amazon.ask.Skills;
-
-import skillproject_fr13.scorekeeper.handlers.CancelAndStopIntentHandler;
-import skillproject_fr13.scorekeeper.handlers.EndGameSessionIntentHandler;
-import skillproject_fr13.scorekeeper.handlers.GetPlayerScoresIntentHandler;
-import skillproject_fr13.scorekeeper.handlers.HelpIntentHandler;
-import skillproject_fr13.scorekeeper.handlers.LaunchRequestHandler;
-import skillproject_fr13.scorekeeper.handlers.SessionEndedRequestHandler;
-import skillproject_fr13.scorekeeper.handlers.SetNegativePlayerScoreIntentHandler;
-import skillproject_fr13.scorekeeper.handlers.SetPositivePlayerScoreIntentHandler;
-import skillproject_fr13.scorekeeper.handlers.StartGameSessionIntentHandler;
+import com.edu.hm.skillproject_fr_13.scorekeeper.handlers.CancelAndStopIntentHandler;
+import com.edu.hm.skillproject_fr_13.scorekeeper.handlers.EndGameSessionIntentHandler;
+import com.edu.hm.skillproject_fr_13.scorekeeper.handlers.GetPlayerScoresIntentHandler;
+import com.edu.hm.skillproject_fr_13.scorekeeper.handlers.HelpIntentHandler;
+import com.edu.hm.skillproject_fr_13.scorekeeper.handlers.LaunchRequestHandler;
+import com.edu.hm.skillproject_fr_13.scorekeeper.handlers.SessionEndedRequestHandler;
+import com.edu.hm.skillproject_fr_13.scorekeeper.handlers.SetNegativePlayerScoreIntentHandler;
+import com.edu.hm.skillproject_fr_13.scorekeeper.handlers.SetPositivePlayerScoreIntentHandler;
+import com.edu.hm.skillproject_fr_13.scorekeeper.handlers.StartGameSessionIntentHandler;
 
 public class ScoreKeeperStreamHandler extends SkillStreamHandler {
 	

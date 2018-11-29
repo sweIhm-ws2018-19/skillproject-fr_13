@@ -1,4 +1,4 @@
-package skillproject_fr13.scorekeeper.handlers;
+package com.edu.hm.skillproject_fr_13.scorekeeper.handlers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -15,8 +15,7 @@ import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.response.ResponseBuilder;
-
-import skillproject_fr13.scorekeeper.handlers.CancelAndStopIntentHandler;
+import com.edu.hm.skillproject_fr_13.scorekeeper.handlers.CancelAndStopIntentHandler;
 
 
 public class CancelAndStopIntentHandlerTest {

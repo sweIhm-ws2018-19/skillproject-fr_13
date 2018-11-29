@@ -3,6 +3,8 @@ package sweIhm_ws2018_19.skillproject_fr_13.scorekeeper;
 import com.amazon.ask.Skill;
 import com.amazon.ask.SkillStreamHandler;
 import com.amazon.ask.Skills;
+import com.amazon.ask.builder.CustomSkillConfiguration;
+import com.amazonaws.regions.Region;
 
 import sweIhm_ws2018_19.skillproject_fr_13.scorekeeper.handlers.*;
 
@@ -28,6 +30,5 @@ public class ScoreKeeperStreamHandler extends SkillStreamHandler {
     public ScoreKeeperStreamHandler() {
         super(getSkill());
     }
-
 
 }

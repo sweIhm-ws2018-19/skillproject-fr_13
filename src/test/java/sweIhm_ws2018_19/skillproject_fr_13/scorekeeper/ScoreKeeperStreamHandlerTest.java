@@ -1,0 +1,16 @@
+package sweIhm_ws2018_19.skillproject_fr_13.scorekeeper;
+
+import static org.junit.Assert.assertTrue;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+class ScoreKeeperStreamHandlerTest {
+
+	@DisplayName ("This class will not be tested for now -Anton 2018-11-26")
+	@Test
+	public void testEnabled() {
+		assertTrue(true);
+	}
+	
+}

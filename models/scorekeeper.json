@@ -113,6 +113,21 @@
                         "beende die spielsitzung",
                         "beende das spiel"
                     ]
+                },
+                {
+                    "name": "SetGameProfileIntent",
+                    "slots": [],
+                    "samples": [
+                        "wir spielen {ProfileName}",
+                        "lass uns {ProfileName} spielen"
+                    ]
+                },
+                {
+                    "name": "SetNewGameProfileIntent",
+                    "slots": [],
+                    "samples": [
+                        "starte spiel mit {StartPoints} Punkten"
+                    ]
                 }
             ],
             "types": []

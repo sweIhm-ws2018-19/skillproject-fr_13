@@ -1,4 +1,4 @@
-package edu.hm.skillproject_fr_13.scorekeeper.handlers;
+package test.java.edu.hm.skillproject_fr_13.scorekeeper.handlers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -48,6 +48,7 @@ public class CancelAndStopIntentHandlerTest {
 
 	@Test
 	public void test_HandleCancelAndStop() {
+		
 		
 		RequestHandler sut = new CancelAndStopIntentHandler();
 		final ResponseBuilder responseBuilder = new ResponseBuilder();

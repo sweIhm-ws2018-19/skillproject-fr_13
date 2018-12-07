@@ -21,6 +21,9 @@ import edu.hm.skillproject_fr_13.scorekeeper.handlers.CancelAndStopIntentHandler
 
 public class CancelAndStopIntentHandlerTest {
 	
+	/**
+	 * generic test showing that tests are working.
+	 */
 	@Test
 	public void test_Enabled() {
 		assertEquals(true, true);

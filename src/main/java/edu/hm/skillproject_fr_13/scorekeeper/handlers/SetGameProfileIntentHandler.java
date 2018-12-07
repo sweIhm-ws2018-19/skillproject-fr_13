@@ -20,9 +20,6 @@ public abstract class SetGameProfileIntentHandler implements RequestHandler {
         if (profile == null) {
             responseBuilder.withSpeech(SetPositivePlayerScoreIntentHandler.NO_SESSION);
         }
-
-        
-
         return responseBuilder
                 .withShouldEndSession(false)
                 .build();

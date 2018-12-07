@@ -1,7 +1,8 @@
-package test.java.edu.hm.skillproject_fr_13.scorekeeper.models;
+package edu.hm.skillproject_fr_13.scorekeeper.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +20,10 @@ public class GameProfileTest {
 	public void testCtorNameNull() {
 		assertThrows(NullPointerException.class, ()->{new GameProfile(null, 0, false, 100, true);});
 	}
-	
+
+	/**
+	 * arangement is illogical.
+	 */
 	@Test
 	public void testCtorIllegal() {
 		assertThrows(IllegalArgumentException.class, () -> {new GameProfile("", 0, true, -1, false);});
@@ -49,4 +53,13 @@ public class GameProfileTest {
 		assertEquals(sut.getIsCountdown(), false);
 	}
 
+	@Test
+	public void testGetStartPoints() {
+		assertEquals(sut.getStartPoints(), 0);
+	}
+	
+	@Test
+	public void testHasPointsLimit() {
+		assertTrue(sut.hasPointsLimit());
+	}
 }

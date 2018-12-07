@@ -12,7 +12,7 @@ import com.amazon.ask.response.ResponseBuilder;
 
 public abstract class SetGameProfileIntentHandler implements RequestHandler {
 
-    public Optional<Response> handle(HandlerInput input) {
+    public Optional	<Response> handle(HandlerInput input) {
         GameProfile profile = (GameProfile)input.getAttributesManager().getPersistentAttributes().get("GameProfile");
 
         ResponseBuilder responseBuilder = input.getResponseBuilder();

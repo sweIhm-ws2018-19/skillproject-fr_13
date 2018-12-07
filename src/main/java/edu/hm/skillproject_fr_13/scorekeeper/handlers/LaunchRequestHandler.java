@@ -26,7 +26,7 @@ public class LaunchRequestHandler implements RequestHandler {
 				.getPersistentAttributes();
 		final String response;
 		
-		if (persistentAttributes.containsKey("ScoreTable"))
+		if (persistentAttributes.containsKey("ActivePlayers"))
 			response = WELCOME_CONTINUE;
 		else
 			response = WELCOME_NEWSESSION;

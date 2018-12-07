@@ -23,8 +23,8 @@ public class EndGameSessionIntentHandler implements RequestHandler {
 				.getPersistentAttributes();
 		final String response;
 		
-		if (persistentAttributes.containsKey("ScoreTable")) {
-			persistentAttributes.remove("ScoreTable");
+		if (persistentAttributes.containsKey("ActivePlayers")) {
+			persistentAttributes.remove("ActivePlayers");
 			input.getAttributesManager().savePersistentAttributes();
 			response = CONFIRMATION;
 		}

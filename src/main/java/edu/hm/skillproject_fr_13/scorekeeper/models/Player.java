@@ -73,4 +73,8 @@ public class Player implements GenericPlayer{
 		return hash;
 	}
 	
+	@Override
+	public String toString() {
+		return getName() + ' ' + getPlayerPoints().toString() + '.';
+	}
 }

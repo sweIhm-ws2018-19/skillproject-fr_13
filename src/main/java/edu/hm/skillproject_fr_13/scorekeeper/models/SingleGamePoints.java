@@ -11,25 +11,25 @@ public class SingleGamePoints implements GamePoints {
      * Name of the points.
      */
     public static final String NAME = "Default";
-    private final Map<String,Integer> points;
+    private final Map<String,Long> points;
 
-    public SingleGamePoints(int points) {
-        this.points = new HashMap<String,Integer>();
+    public SingleGamePoints(long points) {
+        this.points = new HashMap<String,Long>();
         this.points.put(SingleGamePoints.NAME, points);
     }
 
     @Override
-    public Map<String, Integer> getPoints() {
+    public Map<String, Long> getPoints() {
         return this.points;
     }
 
     @Override
-    public int getPointsByName(String name) {
+    public long getPointsByName(String name) {
         return this.points.get(SingleGamePoints.NAME);
     }
 
     @Override
-    public void setPointsByName(String name, int points) {
+    public void setPointsByName(String name, Long points) {
 		this.points.put(SingleGamePoints.NAME, points);
 	}
 

@@ -4,10 +4,10 @@ import java.util.Map;
 
 public interface GamePoints {
 
-    public Map<String,Integer> getPoints();
+    public Map<String, Long> getPoints();
 
-    public int  getPointsByName(String name);
+    public long  getPointsByName(String name);
 
-    public void setPointsByName(String name, int points);
+    public void setPointsByName(String name, Long points);
     
 }

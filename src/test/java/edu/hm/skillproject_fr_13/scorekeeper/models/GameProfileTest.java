@@ -16,18 +16,18 @@ public class GameProfileTest {
 		sut = new GameProfile("Tom", 0, true, 120, false);
 	}
 
-	@Test
-	public void testCtorNameNull() {
-		assertThrows(NullPointerException.class, ()->{new GameProfile(null, 0, false, 100, true);});
-	}
+//	@Test
+//	public void testCtorNameNull() {
+//		assertThrows(NullPointerException.class, ()->{new GameProfile(null, 0, false, 100, true);});
+//	}
 
-	/**
-	 * arangement is illogical.
-	 */
-	@Test
-	public void testCtorIllegal() {
-		assertThrows(IllegalArgumentException.class, () -> {new GameProfile("", 0, true, -1, false);});
-	}
+//	/**
+//	 * arangement is illogical.
+//	 */
+//	@Test
+//	public void testCtorIllegal() {
+//		assertThrows(IllegalArgumentException.class, () -> {new GameProfile("", 0, true, -1, false);});
+//	}
 	
 	@Test
 	public void testGetInsertedName() {
@@ -39,14 +39,15 @@ public class GameProfileTest {
 		assertEquals(sut.getPointsLimit(), 120);
 	}
 	
-	/**
-	 * currently behaviour not actually specified.
-	 */
-	@Test
-	public void testPointLimitIllegal() {
-		GameProfile sut = new GameProfile("Herbert", 0, false, 5, false);
-		assertThrows(IllegalArgumentException.class, ()-> {sut.getPointsLimit();});
-	}
+//	/**
+//	 * currently behaviour not actually specified.
+//	 */
+//	@Test
+//	@Disabled
+//	public void testPointLimitIllegal() {
+//		GameProfile sut = new GameProfile("Herbert", 0, false, 5, false);
+//		assertThrows(IllegalArgumentException.class, ()-> {sut.getPointsLimit();});
+//	}
 	
 	@Test
 	public void testGetIsCountdown() {

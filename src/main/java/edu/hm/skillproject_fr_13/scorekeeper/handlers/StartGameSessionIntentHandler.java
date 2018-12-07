@@ -10,6 +10,8 @@ import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 
+import edu.hm.skillproject_fr_13.scorekeeper.models.Player;;
+
 public class StartGameSessionIntentHandler implements RequestHandler {
 	
 	public static final String CONFIRMATION =
@@ -29,11 +31,11 @@ public class StartGameSessionIntentHandler implements RequestHandler {
 				.getPersistentAttributes();
 		final String response;
 		
-		if (persistentAttributes.containsKey("ScoreTable"))
+		if (persistentAttributes.containsKey("ActivePlayers"))
 			response = SESSION_RUNNING;
 		else {
 			persistentAttributes
-				.put("ScoreTable", new HashMap<String, Long>());
+				.put("ActivePlayers", new HashMap<String, Player>());
 			input.getAttributesManager().savePersistentAttributes();
 			response = CONFIRMATION;
 		}

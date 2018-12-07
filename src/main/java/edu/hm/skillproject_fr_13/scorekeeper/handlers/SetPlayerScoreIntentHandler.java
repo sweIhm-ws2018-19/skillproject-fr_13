@@ -10,6 +10,8 @@ import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 import com.amazon.ask.response.ResponseBuilder;
 
+import edu.hm.skillproject_fr_13.scorekeeper.models.Player;
+
 public abstract class SetPlayerScoreIntentHandler implements RequestHandler {
 
 	public static final String CONFIRMATION = "%d Punkte für %s gespeichert.";
@@ -17,13 +19,13 @@ public abstract class SetPlayerScoreIntentHandler implements RequestHandler {
 	public static final String REPROMPT = "Ähm... was?";
 
 	public Optional<Response> handle(HandlerInput input) {
-		final Map<String, Long> scoreTable = (Map<String, Long>) input
+		final Map<String, Player> playerTable = (Map<String, Player>) input
 				.getAttributesManager()
 				.getPersistentAttributes()
-				.get("ScoreTable");
+				.get("ActivePlayers");
 		ResponseBuilder responseBuilder = input.getResponseBuilder();
 
-		if (scoreTable == null)
+		if (playerTable == null)
 			responseBuilder.withSpeech(NO_SESSION);
 		else
 			try {
@@ -32,9 +34,9 @@ public abstract class SetPlayerScoreIntentHandler implements RequestHandler {
 						.getSlots();
 
 				final String playerName = slots.get("PlayerName").getValue();
-				final long points = parsePoints(slots.get("Points").getValue());
+				final Long points = parsePoints(slots.get("Points").getValue());
 
-				scoreTable.put(playerName, points);
+				playerTable.get(playerName).getPlayerPoints().setPointsByName("DEFAULT", points);
 				input.getAttributesManager().savePersistentAttributes();
 
 				responseBuilder

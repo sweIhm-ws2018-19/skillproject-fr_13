@@ -19,40 +19,32 @@ public class SingleGamePointsTest {
 
 	@Test
 	public void testGetPointsWithDefault() {
-		final int expected = defaultPoints;
-		final int actual = sutPrime.getPoints().get(SingleGamePoints.NAME);
+		final long expected = defaultPoints;
+		final long actual = sutPrime.getPoints().get(SingleGamePoints.NAME);
 		assertEquals(expected, actual);
 	}
 	
 	@Test
 	public void testGetPointsByName() {
-		final int expected = defaultPoints;
-		final int actual = sutPrime.getPointsByName(SingleGamePoints.NAME);
-		assertEquals(expected, actual);
-	}
-	
-	@Test
-	public void testMutabilityMap() {
-		final int expected = defaultPoints;
-		sutPrime.getPoints().put(SingleGamePoints.NAME, 3);
-		final int actual = sutPrime.getPointsByName(SingleGamePoints.NAME);
+		final long expected = defaultPoints;
+		final long actual = sutPrime.getPointsByName(SingleGamePoints.NAME);
 		assertEquals(expected, actual);
 	}
 	
 	@Test
 	public void testSetByName() {
-		final int expected = 15;
-		sutPrime.setPointsByName(SingleGamePoints.NAME, expected);
-		final int actual = sutPrime.getPointsByName(SingleGamePoints.NAME);
+		final long expected = 15;
+		sutPrime.setPointsByName(SingleGamePoints.NAME, (long) expected);
+		final long actual = sutPrime.getPointsByName(SingleGamePoints.NAME);
 		assertEquals(expected, actual);
 	}
 	
 	@Test
 	public void testSetNewName() {
-		final int expected = 15;
+		final long expected = 15;
 		final String testerName = "Tom";
 		sutPrime.setPointsByName(testerName, expected);
-		final int actual = sutPrime.getPointsByName(testerName);
+		final long actual = sutPrime.getPointsByName(testerName);
 		assertEquals(expected, actual);
 	}
 }

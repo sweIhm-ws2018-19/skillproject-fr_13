@@ -7,6 +7,7 @@ import com.amazon.ask.Skills;
 import edu.hm.skillproject_fr_13.scorekeeper.handlers.CancelAndStopIntentHandler;
 import edu.hm.skillproject_fr_13.scorekeeper.handlers.EndGameSessionIntentHandler;
 import edu.hm.skillproject_fr_13.scorekeeper.handlers.GetPlayerScoresIntentHandler;
+import edu.hm.skillproject_fr_13.scorekeeper.handlers.GetSpecificPlayerScoreIntentHandler;
 import edu.hm.skillproject_fr_13.scorekeeper.handlers.HelpIntentHandler;
 import edu.hm.skillproject_fr_13.scorekeeper.handlers.LaunchRequestHandler;
 import edu.hm.skillproject_fr_13.scorekeeper.handlers.SessionEndedRequestHandler;
@@ -26,6 +27,7 @@ public class ScoreKeeperStreamHandler extends SkillStreamHandler {
                        new StartGameSessionIntentHandler(),
                        new EndGameSessionIntentHandler(),
                        new GetPlayerScoresIntentHandler(),
+                       new GetSpecificPlayerScoreIntentHandler(),
                        new SetPositivePlayerScoreIntentHandler(),
                        new SetNegativePlayerScoreIntentHandler())
                 .withTableName("scorekeeper-table")

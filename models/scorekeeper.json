@@ -126,7 +126,10 @@
                     "name": "SetNewGameProfileIntent",
                     "slots": [],
                     "samples": [
-                        "starte spiel mit {StartPoints} Punkten"
+                        "starte spiel mit {StartPoints} Punkten",
+                        "starte spiel mit {StartPoints} Punkten mit {Limit}",
+                        "starte spiel mit {StartPoints} Punkten mit {Limit} als Countdown",
+                        "starte spiel mit {StartPoints} Punkten mit {Limit} ab"
                     ]
                 }
             ],

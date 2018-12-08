@@ -16,11 +16,8 @@ public abstract class SetNewGameProfileIntentHandler implements RequestHandler {
 
         ResponseBuilder responseBuilder = input.getResponseBuilder();
 
-        if (profile == null) {
-            responseBuilder.withSpeech(SetPositivePlayerScoreIntentHandler.NO_SESSION);
-        }
-
-
+       
+        
         return responseBuilder
                 .withShouldEndSession(false)
                 .build();

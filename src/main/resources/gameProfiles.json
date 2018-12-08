@@ -1,0 +1,10 @@
+[
+    {
+        "@class": "edu.hm.skillproject_fr_13.scorekeeper.models.GameProfile",
+        "name": "ZeroUp",
+        "startPoints": 0,
+        "hasPointsLimit": false,
+        "pointsLimit": 0,
+        "isCountdown": false
+    }
+]

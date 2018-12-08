@@ -1,14 +1,16 @@
 package edu.hm.skillproject_fr_13.scorekeeper.models;
 
-public class GameProfile {
+import edu.hm.skillproject_fr_13.scorekeeper.interfaces.GamePoints;
 
-    private final String name;
-    private final int startPoints;
-    private final boolean hasPointsLimit;
-    private final int pointsLimit;
-    private final boolean isCountdown;
+public class GameProfile {
     
-    public GameProfile(String name, int startPoints, boolean hasPointsLimit, int pointsLimit, boolean isCountdown) {
+    private final String name;
+    private final GamePoints startPoints;
+    private final boolean hasPointsLimit;
+    private final GamePoints pointsLimit;
+    private final boolean isCountdown;
+
+    public GameProfile(String name, GamePoints startPoints, boolean hasPointsLimit, GamePoints pointsLimit, boolean isCountdown) {
         this.name = name;
         this.startPoints = startPoints;
         this.hasPointsLimit = hasPointsLimit;
@@ -16,11 +18,15 @@ public class GameProfile {
         this.isCountdown = isCountdown;
     }
 
+    public GameProfile(String name, GamePoints startPoints, boolean hasPointsLimit, boolean isCountdown) {
+        this(name, startPoints, hasPointsLimit, null, isCountdown);
+    }
+
     public String getName() {
         return this.name;
     }
 
-    public int getStartPoints() {
+    public GamePoints getStartPoints() {
         return this.startPoints;
     }
 
@@ -28,7 +34,7 @@ public class GameProfile {
         return this.hasPointsLimit;
     }
 
-    public int getPointsLimit() {
+    public GamePoints getPointsLimit() {
         return this.pointsLimit;
     }
 

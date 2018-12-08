@@ -128,6 +128,35 @@
                     "samples": [
                         "starte spiel mit {StartPoints} Punkten"
                     ]
+                },
+                {
+                	"name":"AddPlayerHandler",
+                	"slots":[
+                        {
+                            "name": "PlayerToAdd",
+                            "type": "AMAZON.DE_FIRST_NAME"
+                        },
+                    ]
+                	"samples": [
+                		"Spieler {PlayerToAdd} tritt dem Spiel bei.",
+                		"{PlayerToAdd} tritt dem Spiel bei.",
+                		"{PlayerToAdd} will mitspielen."
+                	]
+                },
+                {
+                	"name":"DeletePlayerHandler",
+                	"slots":[
+                        {
+                            "name": "PlayerToDelete",
+                            "type": "AMAZON.DE_FIRST_NAME"
+                        },
+                    ]
+                	"samples": [
+                		"Spieler {PlayerToAdd} tritt aus dem Spiel aus.",
+                		"{PlayerToDelete} geht heim.",
+                		"{PlayerToDelete} will nicht mehr mitspielen.",
+                		"{PlayerToDelete} hat keine lust mehr."
+                	]
                 }
             ],
             "types": []

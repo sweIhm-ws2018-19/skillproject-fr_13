@@ -32,7 +32,7 @@ public class StartGameIntentHandler implements RequestHandler {
 		} 
 		
 		Map<String, Player> playerMap = (Map<String, Player>)(persistentAttributes.get("ActivePlayers"));
-		if (Objects.isNull(persistentAttributes.get("ActivePlayers")) || playerMap.size() < 1 ) {
+		if (Objects.isNull(playerMap) || playerMap.size() < 1 ) {
 			return input.getResponseBuilder().withSpeech(NO_ACTIVE_PLAYERS).build();
 		}
 		

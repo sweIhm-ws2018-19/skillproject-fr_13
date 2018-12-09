@@ -32,9 +32,10 @@ public class AddPlayerHandler implements RequestHandler {
 				.get("ActivePlayers");
 		
 		if(Objects.isNull(playerBase)) {
+			playerBase = new HashMap<String, Player>();
 			input.getAttributesManager()
 			.getPersistentAttributes()
-			.putIfAbsent("ActivePlayers", new HashMap<String, Player>());
+			.put("ActivePlayers", playerBase);
 		}
 		
 		final Map<String, Slot> slots = ((IntentRequest) input.getRequest())

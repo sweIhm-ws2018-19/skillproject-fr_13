@@ -33,10 +33,7 @@ public class LaunchRequestHandler implements RequestHandler {
 		else
 			response = WELCOME_NEWSESSION;
 
-        Map<String, Object> attributes = input.getAttributesManager().getPersistentAttributes();
-        
-        attributes.put("GameProfile", new GameProfile("Default", 0,true, 120, false));
-        
+        persistentAttributes.put("GameProfile", new GameProfile("Default", 0,true, 120, false));
         input.getAttributesManager().savePersistentAttributes();
 		
 		return input.getResponseBuilder()

@@ -116,7 +116,12 @@
                 },
                 {
                     "name": "SetGameProfileIntent",
-                    "slots": [],
+                    "slots": [
+                        {
+                            "name": "ProfileName",
+                            "type": "PROFILE_NAME"
+                        }
+                    ],
                     "samples": [
                         "wir spielen {ProfileName}",
                         "lass uns {ProfileName} spielen"
@@ -124,16 +129,30 @@
                 },
                 {
                     "name": "SetNewGameProfileIntent",
-                    "slots": [],
+                    "slots": [
+                        {
+                             "name": "StartPoints",
+                             "type":"AMAZON.NUMBER"
+                        }
+                    ],
                     "samples": [
                         "starte spiel mit {StartPoints} Punkten",
-                        "starte spiel mit {StartPoints} Punkten mit {Limit}",
-                        "starte spiel mit {StartPoints} Punkten mit {Limit} als Countdown",
-                        "starte spiel mit {StartPoints} Punkten mit {Limit} ab"
+                        "neues profil mit {StartPoints} Punkten"
                     ]
                 }
             ],
-            "types": []
+            "types": [
+                {
+                    "name": "PROFILE_NAME",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "ZeroUp"
+                            }
+                        }
+                    ]
+                }
+            ]
         }
     }
 }

@@ -10,6 +10,8 @@ import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.LaunchRequest;
 import com.amazon.ask.model.Response;
 
+import edu.hm.skillproject_fr_13.scorekeeper.models.GameProfile;
+
 public class LaunchRequestHandler implements RequestHandler {
 	
 	public static final String WELCOME_NEWSESSION =
@@ -30,6 +32,12 @@ public class LaunchRequestHandler implements RequestHandler {
 			response = WELCOME_CONTINUE;
 		else
 			response = WELCOME_NEWSESSION;
+
+        Map<String, Object> attributes = input.getAttributesManager().getPersistentAttributes();
+        
+        attributes.put("GameProfile", new GameProfile("Default", 0,true, 120, false));
+        
+        input.getAttributesManager().savePersistentAttributes();
 		
 		return input.getResponseBuilder()
 				.withSpeech(response)

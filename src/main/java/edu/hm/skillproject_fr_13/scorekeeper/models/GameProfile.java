@@ -1,5 +1,7 @@
 package edu.hm.skillproject_fr_13.scorekeeper.models;
 
+import edu.hm.skillproject_fr_13.scorekeeper.interfaces.GamePoints;
+
 public class GameProfile {
 
     private final String name;
@@ -34,5 +36,9 @@ public class GameProfile {
 
     public boolean getIsCountdown() {
         return this.isCountdown;
+    }
+    
+    public GamePoints getUsedGamePointsForGame() {
+    	return new SingleGamePoints(0);
     }
 }

@@ -118,15 +118,7 @@
                     "name": "SetGameProfileIntent",
                     "slots": [],
                     "samples": [
-                        "wir spielen {ProfileName}",
-                        "lass uns {ProfileName} spielen"
-                    ]
-                },
-                {
-                    "name": "SetNewGameProfileIntent",
-                    "slots": [],
-                    "samples": [
-                        "starte spiel mit {StartPoints} Punkten"
+                        "wir spielen ein Spiel"
                     ]
                 },
                 {
@@ -157,6 +149,16 @@
                 		"{PlayerToDelete} will nicht mehr mitspielen.",
                 		"{PlayerToDelete} hat keine lust mehr."
                 	]
+                }, 
+                {
+                	"name":"StartGameIntent",
+                    "slots": [],
+                    "samples":[
+                    	"Jetzt wird gespielt.",
+                    	"Die Runde beginnt.",
+                    	"Eine neue Runde."
+                    ]
+                	
                 }
             ],
             "types": []

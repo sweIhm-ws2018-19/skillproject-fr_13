@@ -15,7 +15,7 @@ import edu.hm.skillproject_fr_13.scorekeeper.models.Player;
 public abstract class SetPlayerScoreIntentHandler implements RequestHandler {
 
 	public static final String CONFIRMATION = "%d Punkte für %s gespeichert.";
-	public static final String NO_SESSION = "Du musst zuerst eine Spielsitzung starten.";
+	public static final String NO_SESSION = "Du musst zuerst ein Spiel starten.";
 	public static final String REPROMPT = "Ähm... was?";
 
 	public Optional<Response> handle(HandlerInput input) {
@@ -36,7 +36,7 @@ public abstract class SetPlayerScoreIntentHandler implements RequestHandler {
 				final String playerName = slots.get("PlayerName").getValue();
 				final Long points = parsePoints(slots.get("Points").getValue());
 
-				playerTable.get(playerName).getPlayerPoints().setPointsByName("DEFAULT", points);
+				playerTable.get(playerName).getPlayerPoints().setPointsByName("Default", points);
 				input.getAttributesManager().savePersistentAttributes();
 
 				responseBuilder

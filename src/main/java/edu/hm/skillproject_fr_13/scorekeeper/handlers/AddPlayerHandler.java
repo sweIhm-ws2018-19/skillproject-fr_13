@@ -46,6 +46,7 @@ public class AddPlayerHandler implements RequestHandler {
 			return input.getResponseBuilder().withSpeech(UNSUCCESSFUL).build();
 		} else {
 			playerBase.put(nameOfPlayerToAdd, new Player(nameOfPlayerToAdd));
+			input.getAttributesManager().savePersistentAttributes();
 			return input.getResponseBuilder().withSpeech(SUCCESSFUL + nameOfPlayerToAdd + " wurde zum Spielen hinzugefügt.").build();
 		}
 	}

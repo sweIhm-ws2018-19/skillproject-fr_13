@@ -16,8 +16,7 @@ import edu.hm.skillproject_fr_13.scorekeeper.models.Player;
 public class DeletePlayerHandler implements RequestHandler {
 
 	final String ACTIVE_PLAYERS_NOT_EXIST = "Es wurden noch keine Spieler erstellt, "
-			+ "daher können auch keine Spieler gelöscht werden" 
-			+ ", bitte füge zunächst deinem Spiel Spieler hinzu.";
+			+ "daher können auch keine Spieler gelöscht werden" + ", bitte füge zunächst deinem Spiel Spieler hinzu.";
 	final String NO_PLAYERS_ACTIVE = "Momentan sind keine Spieler aktive daher können auch keine gelöscht werden.";
 	final String SUCCESSFUL = "Spieler wurde gelöscht.";
 	final String UNSUCCESSFUL = "Spieler wurde nicht gelöscht, er wurde nicht aufgefunden.";
@@ -29,36 +28,28 @@ public class DeletePlayerHandler implements RequestHandler {
 
 	@Override
 	public Optional<Response> handle(HandlerInput input) {
-		Map<String, Player> playerBase = (Map<String, Player>) input
-				.getAttributesManager()
-				.getPersistentAttributes()
+		Map<String, Player> playerBase = (Map<String, Player>) input.getAttributesManager().getPersistentAttributes()
 				.get("ActivePlayers");
-		
-		if(Objects.isNull(playerBase)) {
+
+		if (Objects.isNull(playerBase)) {
 			return input.getResponseBuilder().withSpeech(ACTIVE_PLAYERS_NOT_EXIST).build();
 		}
 		if (playerBase.isEmpty()) {
-			return input.getResponseBuilder().withSpeech(NO_PLAYERS_ACTIVE).build();	
+			return input.getResponseBuilder().withSpeech(NO_PLAYERS_ACTIVE).build();
 		}
-		
-		final Map<String, Slot> slots = ((IntentRequest) input.getRequest())
-						.getIntent()
-						.getSlots();
+
+		final Map<String, Slot> slots = ((IntentRequest) input.getRequest()).getIntent().getSlots();
 		final String nameOfPlayerToRemove = slots.get("PlayerToRemove").getValue();
-		
-		if(playerBase.containsKey(nameOfPlayerToRemove)) {
+
+		if (playerBase.containsKey(nameOfPlayerToRemove)) {
 			playerBase.remove(nameOfPlayerToRemove);
-			input.getAttributesManager()
-			.getPersistentAttributes()
-			.put("ActivePlayers", playerBase);
-			
+			input.getAttributesManager().getPersistentAttributes().put("ActivePlayers", playerBase);
+
 			input.getAttributesManager().savePersistentAttributes();
-			
-			return input.getResponseBuilder()
-					.withSpeech(SUCCESSFUL).build();
+
+			return input.getResponseBuilder().withSpeech(SUCCESSFUL).build();
 		} else {
-			return input.getResponseBuilder()
-					.withSpeech(UNSUCCESSFUL).build();
+			return input.getResponseBuilder().withSpeech(UNSUCCESSFUL).build();
 		}
 	}
 }

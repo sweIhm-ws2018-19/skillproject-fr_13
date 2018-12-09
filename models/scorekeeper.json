@@ -1,167 +1,176 @@
 {
-    "interactionModel": {
-        "languageModel": {
-            "invocationName": "score keeper",
-            "intents": [
-                {
-                    "name": "AMAZON.CancelIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.HelpIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.StopIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.NavigateHomeIntent",
-                    "samples": []
-                },
-                {
-                    "name": "StartGameSessionIntent",
-                    "slots": [],
-                    "samples": [
-                        "los",
-                        "los geht's",
-                        "spiel starten",
-                        "neues spiel",
-                        "starte ein neues spiel",
-                        "starte ein spiel",
-                        "ich will spielen",
-                        "lass uns spielen",
-                        "du schreibst",
-                        "spiel start",
-                        "spielstart",
-                        "spiel starten"
-                    ]
-                },
-                {
-                    "name": "SetPositivePlayerScoreIntent",
-                    "slots": [
-                        {
-                            "name": "PlayerName",
-                            "type": "AMAZON.DE_FIRST_NAME"
-                        },
-                        {
-                            "name": "Points",
-                            "type": "AMAZON.NUMBER"
-                        }
-                    ],
-                    "samples": [
-                        "merk dir {Points} punkte für {PlayerName}",
-                        "schreib {Points} punkte für {PlayerName}",
-                        "{PlayerName} hat {Points} punkte",
-                        "{Points} punkte für {PlayerName}",
-                        "{PlayerName} {Points} punkte"
-                    ]
-                },
-                {
-                    "name": "SetNegativePlayerScoreIntent",
-                    "slots": [
-                        {
-                            "name": "PlayerName",
-                            "type": "AMAZON.DE_FIRST_NAME"
-                        },
-                        {
-                            "name": "Points",
-                            "type": "AMAZON.NUMBER"
-                        }
-                    ],
-                    "samples": [
-                        "{PlayerName} {Points} punkte minus",
-                        "{Points} punkte minus für {PlayerName}",
-                        "{PlayerName} hat {Points} punkte minus",
-                        "schreib {Points} punkte minus für {PlayerName}",
-                        "merk dir {Points} punkte minus für {PlayerName}",
-                        "merk dir minus {Points} punkte für {PlayerName}",
-                        "schreib minus {Points} punkte für {PlayerName}",
-                        "{PlayerName} hat minus {Points} punkte",
-                        "minus {Points} punkte für {PlayerName}",
-                        "{PlayerName} minus {Points} punkte"
-                    ]
-                },
-                {
-                    "name": "GetPlayerScoresIntent",
-                    "slots": [],
-                    "samples": [
-                        "punktestand ausgeben",
-                        "sag mir den punktestand",
-                        "punktestand",
-                        "was ist der punktestand",
-                        "wie viel steht es",
-                        "wie stehen die punkte",
-                        "wie lautet der punktestand",
-                        "lies mir die punkte vor",
-                        "lies mir den punktestand vor",
-                        "sag mir die punkte",
-                        "was ist der aktuelle punktestand",
-                        "wie lautet der aktuelle punktestand"
-                    ]
-                },
-                {
-                    "name": "EndGameSessionIntent",
-                    "slots": [],
-                    "samples": [
-                        "spiel ende",
-                        "spiel beenden",
-                        "spielsitzung beenden",
-                        "spielende",
-                        "wir sind fertig",
-                        "das spiel ist aus",
-                        "beende die spielsitzung",
-                        "beende das spiel"
-                    ]
-                },
-                {
-                    "name": "SetGameProfileIntent",
-                    "slots": [],
-                    "samples": [
-                        "wir spielen ein Spiel"
-                    ]
-                },
-                {
-                	"name":"AddPlayerHandler",
-                	"slots":[
-                        {
-                            "name": "PlayerToAdd",
-                            "type": "AMAZON.DE_FIRST_NAME"
-                        },
-                    ]
-                	"samples": [
-                		"Spieler {PlayerToAdd} tritt dem Spiel bei.",
-                		"{PlayerToAdd} tritt dem Spiel bei.",
-                		"{PlayerToAdd} will mitspielen."
-                	]
-                },
-                {
-                	"name":"DeletePlayerHandler",
-                	"slots":[
-                        {
-                            "name": "PlayerToDelete",
-                            "type": "AMAZON.DE_FIRST_NAME"
-                        },
-                    ]
-                	"samples": [
-                		"Spieler {PlayerToAdd} tritt aus dem Spiel aus.",
-                		"{PlayerToDelete} geht heim.",
-                		"{PlayerToDelete} will nicht mehr mitspielen.",
-                		"{PlayerToDelete} hat keine lust mehr."
-                	]
-                }, 
-                {
-                	"name":"StartGameIntent",
-                    "slots": [],
-                    "samples":[
-                    	"Jetzt wird gespielt.",
-                    	"Die Runde beginnt.",
-                    	"Eine neue Runde."
-                    ]
-                	
-                }
-            ],
-            "types": []
-        }
-    }
+	"interactionModel": {
+		"languageModel": {
+			"invocationName": "score keeper",
+			"intents": [
+				{
+					"name": "AMAZON.CancelIntent",
+					"samples": [
+					]
+				},
+				{
+					"name": "AMAZON.HelpIntent",
+					"samples": [
+					]
+				},
+				{
+					"name": "AMAZON.StopIntent",
+					"samples": [
+					]
+				},
+				{
+					"name": "AMAZON.NavigateHomeIntent",
+					"samples": [
+					]
+				},
+				{
+					"name": "StartGameSessionIntent",
+					"slots": [
+					],
+					"samples": [
+						"los",
+						"los geht's",
+						"spiel starten",
+						"neues spiel",
+						"starte ein neues spiel",
+						"starte ein spiel",
+						"ich will spielen",
+						"lass uns spielen",
+						"du schreibst",
+						"spiel start",
+						"spielstart",
+						"spiel starten"
+					]
+				},
+				{
+					"name": "SetPositivePlayerScoreIntent",
+					"slots": [
+						{
+							"name": "PlayerName",
+							"type": "AMAZON.DE_FIRST_NAME"
+						},
+						{
+							"name": "Points",
+							"type": "AMAZON.NUMBER"
+						}
+					],
+					"samples": [
+						"merk dir {Points} punkte für {PlayerName}",
+						"schreib {Points} punkte für {PlayerName}",
+						"{PlayerName} hat {Points} punkte",
+						"{Points} punkte für {PlayerName}",
+						"{PlayerName} {Points} punkte"
+					]
+				},
+				{
+					"name": "SetNegativePlayerScoreIntent",
+					"slots": [
+						{
+							"name": "PlayerName",
+							"type": "AMAZON.DE_FIRST_NAME"
+						},
+						{
+							"name": "Points",
+							"type": "AMAZON.NUMBER"
+						}
+					],
+					"samples": [
+						"{PlayerName} {Points} punkte minus",
+						"{Points} punkte minus für {PlayerName}",
+						"{PlayerName} hat {Points} punkte minus",
+						"schreib {Points} punkte minus für {PlayerName}",
+						"merk dir {Points} punkte minus für {PlayerName}",
+						"merk dir minus {Points} punkte für {PlayerName}",
+						"schreib minus {Points} punkte für {PlayerName}",
+						"{PlayerName} hat minus {Points} punkte",
+						"minus {Points} punkte für {PlayerName}",
+						"{PlayerName} minus {Points} punkte"
+					]
+				},
+				{
+					"name": "GetPlayerScoresIntent",
+					"slots": [
+					],
+					"samples": [
+						"punktestand ausgeben",
+						"sag mir den punktestand",
+						"punktestand",
+						"was ist der punktestand",
+						"wie viel steht es",
+						"wie stehen die punkte",
+						"wie lautet der punktestand",
+						"lies mir die punkte vor",
+						"lies mir den punktestand vor",
+						"sag mir die punkte",
+						"was ist der aktuelle punktestand",
+						"wie lautet der aktuelle punktestand"
+					]
+				},
+				{
+					"name": "EndGameSessionIntent",
+					"slots": [
+					],
+					"samples": [
+						"spiel ende",
+						"spiel beenden",
+						"spielsitzung beenden",
+						"spielende",
+						"wir sind fertig",
+						"das spiel ist aus",
+						"beende die spielsitzung",
+						"beende das spiel"
+					]
+				},
+				{
+					"name": "SetGameProfileIntent",
+					"slots": [
+					],
+					"samples": [
+						"wir spielen ein Spiel"
+					]
+				},
+				{
+					"name": "AddPlayerHandler",
+					"slots": [
+						{
+							"name": "PlayerToAdd",
+							"type": "AMAZON.DE_FIRST_NAME"
+						}
+					],
+					"samples": [
+						"Spieler {PlayerToAdd} tritt dem Spiel bei.",
+						"{PlayerToAdd} tritt dem Spiel bei.",
+						"{PlayerToAdd} will mitspielen."
+					]
+				},
+				{
+					"name": "DeletePlayerHandler",
+					"slots": [
+						{
+							"name": "PlayerToDelete",
+							"type": "AMAZON.DE_FIRST_NAME"
+						}
+					],
+					"samples": [
+						"Spieler {PlayerToDelete} tritt aus dem Spiel aus.",
+						"{PlayerToDelete} geht heim.",
+						"{PlayerToDelete} will nicht mehr mitspielen.",
+						"{PlayerToDelete} hat keine lust mehr."
+					]
+				},
+				{
+					"name": "StartGameIntent",
+					"slots": [
+					],
+					"samples": [
+						"Jetzt wird gespielt.",
+						"Die Runde beginnt.",
+						"Eine neue Runde."
+					]
+				}
+			],
+			"types": [
+			]
+		}
+	}
 }

@@ -17,36 +17,30 @@ public abstract class SetPlayerScoreIntentHandler implements RequestHandler {
 	public static final String REPROMPT = "Ähm... was?";
 
 	public Optional<Response> handle(HandlerInput input) {
-		final Map<String, Long> scoreTable = (Map<String, Long>) input
-				.getAttributesManager()
-				.getPersistentAttributes()
-				.get("ScoreTable");
+		final Map<String, Map<String, Long>> ActivePlayers = (Map<String, Map<String,Long>>) input.getAttributesManager()
+				.getPersistentAttributes().get("ActivePlayers");
 		ResponseBuilder responseBuilder = input.getResponseBuilder();
 
-		if (scoreTable == null)
+		if (ActivePlayers == null)
 			responseBuilder.withSpeech(NO_SESSION);
 		else
 			try {
-				final Map<String, Slot> slots = ((IntentRequest) input.getRequest())
-						.getIntent()
-						.getSlots();
+				final Map<String, Slot> slots = ((IntentRequest) input.getRequest()).getIntent().getSlots();
 
 				final String playerName = slots.get("PlayerName").getValue();
 				final long points = parsePoints(slots.get("Points").getValue());
 
-				scoreTable.put(playerName, points);
-				input.getAttributesManager().savePersistentAttributes();
-
-				responseBuilder
-					.withSpeech(String.format(CONFIRMATION, points, playerName));
-
+				if (ActivePlayers.containsKey(playerName)) {
+					ActivePlayers.get(playerName).put("default", points);
+					responseBuilder.withSpeech(String.format(CONFIRMATION, points, playerName));
+					input.getAttributesManager().savePersistentAttributes();
+				} else
+					responseBuilder.withSpeech("Der Spieler wurde nicht gefunden.");
 			} catch (NullPointerException | NumberFormatException e) {
 				responseBuilder.withReprompt(REPROMPT);
 			}
 
-		return responseBuilder
-				.withShouldEndSession(false)
-				.build();
+		return responseBuilder.withShouldEndSession(false).build();
 	}
 
 	protected abstract Long parsePoints(String points);

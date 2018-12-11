@@ -121,6 +121,37 @@
                         "Ein ganz normales Spiel",
                         "Wir spielen mit normalen Regeln"
                     ]
+                },
+                {
+                    "name": "AddPlayerIntent",
+                    "slots": [
+                        {
+                            "name": "PlayerName",
+                            "type": "AMAZON.DE_FIRST_NAME"
+                        }
+                    ],
+                    "samples": [
+                        "Jetzt spielt {PlayerName} mit.",
+                        "{PlayerName} macht mit.",
+                        "{PlayerName} möchte mit spielen.",
+                        "{PlayerName} spielt mit.",
+                        "Der Spieler {PlayerName} spielt mit."
+                    ]
+                },
+                {
+                    "name": "DeletePlayerIntent",
+                    "slots": [
+                        {
+                            "name": "PlayerName",
+                            "type": "AMAZON.DE_FIRST_NAME"
+                        }
+                    ],
+                    "samples": [
+                        "Schade {PlayerName} hat keine Lust mehr.",
+                        "{PlayerName} macht nicht mehr mit.",
+                        "{PlayerName} geht heim.",
+                        "{PlayerName} spielt nicht mehr mit."
+                    ]
                 }
             ],
             "types": []

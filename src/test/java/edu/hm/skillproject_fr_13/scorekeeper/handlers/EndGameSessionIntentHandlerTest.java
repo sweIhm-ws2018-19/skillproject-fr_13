@@ -25,10 +25,6 @@ import edu.hm.skillproject_fr_13.scorekeeper.handlers.EndGameSessionIntentHandle
 
 public class EndGameSessionIntentHandlerTest {
 
-	@Test
-	public void testEnabled() {
-		assertEquals(true, true);
-	}
 
 	private HandlerInput inputMock;
 
@@ -78,7 +74,7 @@ public class EndGameSessionIntentHandlerTest {
 
 		AttributesManager attrMock = mock(AttributesManager.class);
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("ScoreTable", null);
+		map.put("ActivePlayers", new HashMap<String, Object>());
 		
 		when(attrMock.getPersistentAttributes()).thenReturn(map);
 		when(inputMock.getAttributesManager()).thenReturn(attrMock);

@@ -23,11 +23,6 @@ import edu.hm.skillproject_fr_13.scorekeeper.handlers.StartGameSessionIntentHand
 
 public class StartGameSessionIntentHandlerTest {
 
-	@Test
-	public void testEnabled() {
-		assertEquals(true, true);
-	}
-
 	private HandlerInput inputMock;
 
 	@BeforeEach

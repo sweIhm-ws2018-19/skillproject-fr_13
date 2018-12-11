@@ -7,10 +7,4 @@ import org.junit.jupiter.api.DisplayName;
 
 public class SetPlayerScoreIntentHandlerTest {
 
-	@DisplayName("Abstract class will be under test via SetPositivePlayerScoreIntentHandler and SetNegativePlayerScoreIntentHandler")
-	@Test
-	public void testEnabled() {
-		assertEquals(true, true);
-	}
-
 }

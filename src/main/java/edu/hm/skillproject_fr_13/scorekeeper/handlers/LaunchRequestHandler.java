@@ -26,13 +26,10 @@ public class LaunchRequestHandler implements RequestHandler {
 				.getPersistentAttributes();
 		final String response;
 		
-		
-		if(persistentAttributes.containsKey("GameProfile"))
+		if(persistentAttributes.containsKey("ScoreTable"))
 			response = WELCOME_CONTINUE;
 		else
 			response = WELCOME_NEWSESSION;
-		
-		
 		
 		return input.getResponseBuilder()
 				.withSpeech(response)

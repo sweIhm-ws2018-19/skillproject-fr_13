@@ -26,10 +26,6 @@ import edu.hm.skillproject_fr_13.scorekeeper.handlers.LaunchRequestHandler;
 
 public class LaunchRequestHandlerTest {
 
-	@Test
-	public void testEnabled() {
-		assertEquals(true, true);
-	}
 
 	private HandlerInput inputMock;
 

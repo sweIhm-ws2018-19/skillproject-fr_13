@@ -29,15 +29,11 @@ public class StartGameSessionIntentHandler implements RequestHandler {
 				.getPersistentAttributes();
 		final String response;
 		
-		if (persistentAttributes.containsKey("GameProfile"))
+		if (persistentAttributes.containsKey("ScoreTable"))
 			response = SESSION_RUNNING;
 		else {
-			Map<String, Map<String, Long>> map = new HashMap<String, Map<String,Long>>();
-			Map<String, Long> points = new HashMap<String, Long>();
-			points.put("default", 10l);
-			map.put("Alex", points);
-			persistentAttributes
-				.put("ActivePlayers", map);
+			Map<String, Long> scoreTable = new HashMap<String, Long>();
+			persistentAttributes.put("ActivePlayers", scoreTable);
 			input.getAttributesManager().savePersistentAttributes();
 			response = CONFIRMATION;
 		}

@@ -28,11 +28,6 @@ import edu.hm.skillproject_fr_13.scorekeeper.handlers.SetPositivePlayerScoreInte
 
 
 public class SetPositivePlayerScoreIntentHandlerTest {
-
-	@Test
-	public void testEnabled() {
-		assertEquals(true, true);
-	}
 	
 	private HandlerInput inputMock;
 

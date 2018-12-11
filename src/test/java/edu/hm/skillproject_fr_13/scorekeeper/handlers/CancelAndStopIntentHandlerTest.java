@@ -21,11 +21,6 @@ import edu.hm.skillproject_fr_13.scorekeeper.handlers.CancelAndStopIntentHandler
 
 public class CancelAndStopIntentHandlerTest {
 	
-	@Test
-	public void test_Enabled() {
-		assertEquals(true, true);
-	}
-	
 	private HandlerInput inputMock;
 	
 	@BeforeEach

@@ -4,6 +4,7 @@ import com.amazon.ask.Skill;
 import com.amazon.ask.SkillStreamHandler;
 import com.amazon.ask.Skills;
 
+import edu.hm.skillproject_fr_13.scorekeeper.handlers.AddPlayerScoreIntentHandler;
 import edu.hm.skillproject_fr_13.scorekeeper.handlers.CancelAndStopIntentHandler;
 import edu.hm.skillproject_fr_13.scorekeeper.handlers.EndGameSessionIntentHandler;
 import edu.hm.skillproject_fr_13.scorekeeper.handlers.GetPlayerScoresIntentHandler;
@@ -13,10 +14,12 @@ import edu.hm.skillproject_fr_13.scorekeeper.handlers.SessionEndedRequestHandler
 import edu.hm.skillproject_fr_13.scorekeeper.handlers.SetNegativePlayerScoreIntentHandler;
 import edu.hm.skillproject_fr_13.scorekeeper.handlers.SetPositivePlayerScoreIntentHandler;
 import edu.hm.skillproject_fr_13.scorekeeper.handlers.StartGameSessionIntentHandler;
+import edu.hm.skillproject_fr_13.scorekeeper.handlers.SubtractPlayerScoreIntentHandler;
 
 public class ScoreKeeperStreamHandler extends SkillStreamHandler {
 	
-    private static Skill getSkill() {
+    @SuppressWarnings("unchecked")
+	private static Skill getSkill() {
         return Skills.standard()
                 .addRequestHandlers(
                        new LaunchRequestHandler(),
@@ -27,7 +30,9 @@ public class ScoreKeeperStreamHandler extends SkillStreamHandler {
                        new EndGameSessionIntentHandler(),
                        new GetPlayerScoresIntentHandler(),
                        new SetPositivePlayerScoreIntentHandler(),
-                       new SetNegativePlayerScoreIntentHandler())
+                       new SetNegativePlayerScoreIntentHandler(),
+                       new AddPlayerScoreIntentHandler(),
+                       new SubtractPlayerScoreIntentHandler())
                 .withTableName("scorekeeper-table")
                 .withAutoCreateTable(true)
                 .build();

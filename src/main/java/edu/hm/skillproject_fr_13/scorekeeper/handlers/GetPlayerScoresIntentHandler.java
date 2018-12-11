@@ -2,6 +2,7 @@ package edu.hm.skillproject_fr_13.scorekeeper.handlers;
 
 import static com.amazon.ask.request.Predicates.intentName;
 
+import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -21,7 +22,8 @@ public class GetPlayerScoresIntentHandler implements RequestHandler {
 	}
 
 	public Optional<Response> handle(HandlerInput input) {
-		final Map<String, Long> scoreTable = (Map<String, Long>) input
+		@SuppressWarnings("unchecked")
+		final Map<String, BigDecimal> scoreTable = (Map<String, BigDecimal>) input
 				.getAttributesManager()
 				.getPersistentAttributes()
 				.get("ScoreTable");

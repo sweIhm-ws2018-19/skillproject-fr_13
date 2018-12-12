@@ -43,4 +43,5 @@ public class GetSpecificPlayerScoreIntentHandler implements RequestHandler {
 				.withShouldEndSession(false)
 				.build();
 	}
+
 }

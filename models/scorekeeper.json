@@ -53,6 +53,7 @@
                         "merk dir {Points} punkte für {PlayerName}",
                         "schreib {Points} punkte für {PlayerName}",
                         "{PlayerName} hat {Points} punkte",
+                        "{PlayerName} hat jetzt {Points} punkte",
                         "{Points} punkte für {PlayerName}",
                         "{PlayerName} {Points} punkte"
                     ]
@@ -73,13 +74,15 @@
                         "{PlayerName} {Points} punkte minus",
                         "{Points} punkte minus für {PlayerName}",
                         "{PlayerName} hat {Points} punkte minus",
+                        "{PlayerName} hat jetzt {Points} punkte minus",
                         "schreib {Points} punkte minus für {PlayerName}",
                         "merk dir {Points} punkte minus für {PlayerName}",
-                        "merk dir minus {Points} punkte für {PlayerName}",
-                        "schreib minus {Points} punkte für {PlayerName}",
-                        "{PlayerName} hat minus {Points} punkte",
-                        "minus {Points} punkte für {PlayerName}",
-                        "{PlayerName} minus {Points} punkte"
+                        "{PlayerName} {Points} minuspunkte",
+                        "{Points} minuspunkte für {PlayerName}",
+                        "{PlayerName} hat {Points} minuspunkte",
+                        "{PlayerName} hat jetzt {Points} minuspunkte",
+                        "schreib {Points} minuspunkte für {PlayerName}",
+                        "merk dir {Points} minuspunkte für {PlayerName}"
                     ]
                 },
                 {
@@ -115,14 +118,6 @@
                     ]
                 },
                 {
-                    "name": "SetGameProfileIntent",
-                    "slots": [],
-                    "samples": [
-                        "Ein ganz normales Spiel",
-                        "Wir spielen mit normalen Regeln"
-                    ]
-                },
-                {
                     "name": "AddPlayerIntent",
                     "slots": [
                         {
@@ -151,6 +146,58 @@
                         "{PlayerName} macht nicht mehr mit.",
                         "{PlayerName} geht heim.",
                         "{PlayerName} spielt nicht mehr mit."
+                    ]
+                },
+                {
+                    "name": "SubtractPlayerScoreIntent",
+                    "slots": [
+                        {
+                            "name": "PlayerName",
+                            "type": "AMAZON.DE_FIRST_NAME"
+                        },
+                        {
+                            "name": "Points",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "merk dir minus {Points} punkte für {PlayerName}",
+                        "schreib minus {Points} punkte für {PlayerName}",
+                        "{PlayerName} hat minus {Points} punkte",
+                        "minus {Points} punkte für {PlayerName}",
+                        "{PlayerName} minus {Points} punkte",
+                        "{PlayerName} hat {Points} punkte verloren",
+                        "{PlayerName} hat {Points} punkte minus gemacht",
+                        "{PlayerName} hat minus {Points} punkte gemacht",
+                        "{PlayerName} hat {Points} minuspunkte gemacht"
+                    ]
+                },
+                {
+                    "name": "AddPlayerScoreIntent",
+                    "slots": [
+                        {
+                            "name": "PlayerName",
+                            "type": "AMAZON.DE_FIRST_NAME"
+                        },
+                        {
+                            "name": "Points",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "merk dir plus {Points} punkte für {PlayerName}",
+                        "schreib plus {Points} punkte für {PlayerName}",
+                        "{PlayerName} hat plus {Points} punkte",
+                        "plus {Points} punkte für {PlayerName}",
+                        "{PlayerName} plus {Points} punkte",
+                        "merk dir {Points} punkte plus für {PlayerName}",
+                        "schreib {Points} punkte plus für {PlayerName}",
+                        "{PlayerName} hat {Points} punkte plus",
+                        "{Points} punkte plus für {PlayerName}",
+                        "{PlayerName} {Points} punkte plus",
+                        "{PlayerName} hat {Points} punkte gewonnen",
+                        "{PlayerName} hat {Points} punkte gemacht",
+                        "{PlayerName} hat {Points} punkte plus gemacht"
                     ]
                 }
             ],

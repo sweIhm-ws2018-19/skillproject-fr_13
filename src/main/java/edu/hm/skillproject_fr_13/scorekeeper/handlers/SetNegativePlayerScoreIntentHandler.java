@@ -12,7 +12,7 @@ public class SetNegativePlayerScoreIntentHandler implements SetPlayerScoreIntent
 	}
 	
 	@Override
-	public Long parsePoints(String points) {
+	public long parsePoints(String points) {
 		return -Long.parseLong(points);
 	}
 

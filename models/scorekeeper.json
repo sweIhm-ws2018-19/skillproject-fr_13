@@ -100,6 +100,23 @@
                         "wie lautet der aktuelle punktestand"
                     ]
                 },
+                                {
+                	"name": "GetSpecificPlayerScoreIntent",
+                	"slots": [
+                		{
+                			"name": "PlayerName",
+                			"type": "AMAZON.DE_FIRST_NAME"
+            			},
+        			],
+        			"samples": [
+        				"wieviele Punkte hat {PlayerName}",
+        				"Punktestand für {PlayerName}",
+        				"sag mir den Punktestand von {PlayerName}",
+        				"was ist der aktuelle Punktestand von {PlayerName}",
+        				"lies mir die punkte von {PlayerName} vor",
+                        "lies mir den punktestand von {PlayerName} vor",
+        			]
+                },
                 {
                     "name": "EndGameSessionIntent",
                     "slots": [],

@@ -1,5 +1,7 @@
 package edu.hm.skillproject_fr_13.scorekeeper.handlers;
 
+
+import static com.amazon.ask.request.Predicates.intentName;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -45,7 +47,7 @@ public class SetPositivePlayerScoreIntentHandlerTest {
 	@Test
 	public void test_CanHandle() {
 		RequestHandler sut = new SetPositivePlayerScoreIntentHandler();
-		when(inputMock.matches(any())).thenReturn(true);
+		when(inputMock.matches(intentName("NegativePositivePlayerScoreIntent"))).thenReturn(true);
 		assertTrue(sut.canHandle(inputMock));
 	}
 

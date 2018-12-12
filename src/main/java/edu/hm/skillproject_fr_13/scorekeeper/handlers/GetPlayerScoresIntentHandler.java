@@ -28,7 +28,7 @@ public class GetPlayerScoresIntentHandler implements RequestHandler {
 			response = NO_SCORES;
 		else
 			response = SCORES + scoreTable.entrySet().stream()
-					.map(entry -> "Spieler: " + entry.getKey() + "hat: " + entry.getValue() + " Punkte")
+					.map(entry -> "Spieler: " + entry.getKey() + "hat: " + entry.getValue() + " Punkte. ")
 					.collect(Collectors.joining(", "));
 
 		return input.getResponseBuilder().withSpeech(response).withShouldEndSession(false).build();

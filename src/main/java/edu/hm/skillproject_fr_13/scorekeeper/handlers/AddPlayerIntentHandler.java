@@ -28,6 +28,7 @@ public class AddPlayerIntentHandler implements RequestHandler {
 
 	@Override
 	public Optional<Response> handle(HandlerInput input) {
+		
 		final Map<String, Long> scoreTable = (Map<String,Long>) input.getAttributesManager()
 				.getPersistentAttributes().get("ScoreTable");
 		final ResponseBuilder responseBuilder = input.getResponseBuilder();

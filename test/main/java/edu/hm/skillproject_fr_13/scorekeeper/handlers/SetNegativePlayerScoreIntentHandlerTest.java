@@ -15,8 +15,6 @@ import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
-import static com.amazon.ask.request.Predicates.intentName;
 import com.amazon.ask.attributes.AttributesManager;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
@@ -49,7 +47,7 @@ public class SetNegativePlayerScoreIntentHandlerTest {
 	@Test
 	public void test_CanHandle() {
 		RequestHandler sut = new SetNegativePlayerScoreIntentHandler();
-		when(inputMock.matches(intentName("SetNegativePlayerScoreIntent"))).thenReturn(true);
+		when(inputMock.matches(any())).thenReturn(true);
 		assertTrue(sut.canHandle(inputMock));
 	}
 

@@ -12,7 +12,7 @@ public class SubtractPlayerScoreIntentHandler extends ModifyPlayerScoreIntentHan
 	}
 	
 	@Override
-	public long parsePoints(String points) {
+	public long calculatePoints(String points) {
 		return basePoints - Long.parseLong(points);
 	}
 

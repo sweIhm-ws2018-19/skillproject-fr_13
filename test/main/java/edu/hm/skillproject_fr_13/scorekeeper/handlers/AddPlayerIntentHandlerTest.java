@@ -42,11 +42,6 @@ public class AddPlayerIntentHandlerTest {
 		when(inputMock.matches(any())).thenReturn(true);
 		assertTrue(sut.canHandle(inputMock));
 	}
-
-	@Test
-	public void handleNullTest() {
-		assertThrows(NullPointerException.class,()-> sut.handle((HandlerInput) null));
-	}
 	
 	@Test
 	public void handleEmptyPersistentAttributesTest() {

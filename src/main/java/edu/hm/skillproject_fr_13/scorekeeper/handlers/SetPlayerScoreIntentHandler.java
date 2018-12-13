@@ -31,7 +31,7 @@ interface SetPlayerScoreIntentHandler extends RequestHandler {
 				final Map<String, Slot> slots = ((IntentRequest) input.getRequest()).getIntent().getSlots();
 
 				final String playerName = slots.get("PlayerName").getValue();
-				final Long points = parsePoints(slots.get("Points").getValue());
+				final Long points = calculatePoints(slots.get("Points").getValue());
 
 				if (scoreTable.containsKey(playerName)) {
 					scoreTable.put(playerName, points);
@@ -47,6 +47,6 @@ interface SetPlayerScoreIntentHandler extends RequestHandler {
 		return responseBuilder.withShouldEndSession(false).build();
 	}
 
-	long parsePoints(String points);
+	long calculatePoints(String points);
 
 }

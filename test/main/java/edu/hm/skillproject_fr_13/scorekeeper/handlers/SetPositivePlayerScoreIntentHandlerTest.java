@@ -50,12 +50,6 @@ public class SetPositivePlayerScoreIntentHandlerTest {
 		when(inputMock.matches(any())).thenReturn(true);
 		assertTrue(sut.canHandle(inputMock));
 	}
-
-	@Test
-	public void test_NullHandle() {
-		RequestHandler sut = new SetPositivePlayerScoreIntentHandler();
-		assertThrows(NullPointerException.class, () -> sut.handle(null));
-	}
 	
 	@Test
 	public void test_NullScoreTable() {
@@ -92,26 +86,76 @@ public class SetPositivePlayerScoreIntentHandlerTest {
 	}
 
 	@Test
-	public void test_ScoreTable() {
+	public void testEmptyScoreTableInvalidRequest() {
 		RequestHandler sut = new SetPositivePlayerScoreIntentHandler();
 		
 		AttributesManager attributeManager = mock(AttributesManager.class);
 		Map<String, Object> persistentAttributes = new HashMap<String, Object>();
 		Map<String, Long> scoreTable = new HashMap<String, Long>();
 		persistentAttributes.put("ScoreTable", scoreTable);
-		
-		when(inputMock.getAttributesManager()).thenReturn(attributeManager);
-		when(attributeManager.getPersistentAttributes()).thenReturn(persistentAttributes);
-		when(inputMock.getResponseBuilder()).thenReturn(new ResponseBuilder());
-		
+
 		Map<String, Slot> slotMap = new HashMap<String, Slot>();
 		slotMap.put("PlayerName", Slot.builder().withValue("Tom Tester").build());
 		slotMap.put("Points", Slot.builder().withValue("15").build());
 		Intent intent = Intent.builder().withSlots(slotMap).build();
+		
+		when(inputMock.getAttributesManager()).thenReturn(attributeManager);
+		when(attributeManager.getPersistentAttributes()).thenReturn(persistentAttributes);
+		when(inputMock.getResponseBuilder()).thenReturn(new ResponseBuilder());
 		when(inputMock.getRequest()).thenReturn(IntentRequest.builder().withIntent(intent).build());
 		
 		sut.handle(inputMock);
+		assertTrue(scoreTable.isEmpty());
+	}
+	
+	@Test
+	public void testScoreTableInvalidRequest() {
+		RequestHandler sut = new SetPositivePlayerScoreIntentHandler();
 		
+		AttributesManager attributeManager = mock(AttributesManager.class);
+		Map<String, Object> persistentAttributes = new HashMap<String, Object>();
+		Map<String, Long> scoreTable = new HashMap<String, Long>();
+		scoreTable.put("Max", AddPlayerIntentHandler.DEFAULT_POINT_VALUE);
+		persistentAttributes.put("ScoreTable", scoreTable);
+
+		Map<String, Slot> slotMap = new HashMap<String, Slot>();
+		slotMap.put("PlayerName", Slot.builder().withValue("Tom Tester").build());
+		slotMap.put("Points", Slot.builder().withValue("15").build());
+		Intent intent = Intent.builder().withSlots(slotMap).build();
+		
+		when(inputMock.getAttributesManager()).thenReturn(attributeManager);
+		when(attributeManager.getPersistentAttributes()).thenReturn(persistentAttributes);
+		when(inputMock.getResponseBuilder()).thenReturn(new ResponseBuilder());
+		when(inputMock.getRequest()).thenReturn(IntentRequest.builder().withIntent(intent).build());
+		
+		sut.handle(inputMock);
+		final int requiredTableSize = 1;
+		assertEquals(scoreTable.size(), requiredTableSize);
+	}
+	@Test
+	public void testScoreTableValidRequest() {
+		RequestHandler sut = new SetPositivePlayerScoreIntentHandler();
+		
+		AttributesManager attributeManager = mock(AttributesManager.class);
+		Map<String, Object> persistentAttributes = new HashMap<String, Object>();
+		Map<String, Long> scoreTable = new HashMap<String, Long>();
+		scoreTable.put("Tom Tester", AddPlayerIntentHandler.DEFAULT_POINT_VALUE);
+		persistentAttributes.put("ScoreTable", scoreTable);
+
+		Map<String, Slot> slotMap = new HashMap<String, Slot>();
+		slotMap.put("PlayerName", Slot.builder().withValue("Tom Tester").build());
+		slotMap.put("Points", Slot.builder().withValue("15").build());
+		Intent intent = Intent.builder().withSlots(slotMap).build();
+		
+		when(inputMock.getAttributesManager()).thenReturn(attributeManager);
+		when(attributeManager.getPersistentAttributes()).thenReturn(persistentAttributes);
+		when(inputMock.getResponseBuilder()).thenReturn(new ResponseBuilder());
+		when(inputMock.getRequest()).thenReturn(IntentRequest.builder().withIntent(intent).build());
+		
+		sut.handle(inputMock);
+		final int requiredTableSize = 1;
+		assertEquals(scoreTable.size(), requiredTableSize);
+		assertTrue(scoreTable.get("Tom Tester").equals(new Long(15)));
 	}
 	
 	

@@ -13,7 +13,8 @@ import com.amazon.ask.model.Response;
 public class LaunchRequestHandler implements RequestHandler {
 	
 	public static final String WELCOME_NEWSESSION =
-			"Willkommen im Score Keeper! Du kannst jetzt eine Spielsitzung starten.";
+			"Willkommen im Score Keeper!"
+			+ "Du kannst jetzt eine Spielsitzung starten.";
 	public static final String WELCOME_CONTINUE =
 			"Willkommen zurück!";
 
@@ -22,11 +23,11 @@ public class LaunchRequestHandler implements RequestHandler {
 	}
 
 	public Optional<Response> handle(HandlerInput input) {
-		final Map<String, Object> persistentAttributes = input.getAttributesManager()
-				.getPersistentAttributes();
+		final Map<String, Object> persistentAttributes =
+				input.getAttributesManager().getPersistentAttributes();
 		final String response;
 		
-		if (persistentAttributes.containsKey("ScoreTable"))
+		if(persistentAttributes.containsKey("ScoreTable"))
 			response = WELCOME_CONTINUE;
 		else
 			response = WELCOME_NEWSESSION;

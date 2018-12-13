@@ -9,11 +9,13 @@ import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 
 public class CancelAndStopIntentHandler implements RequestHandler {
-	
+
 	public static final String BYE = "Bis zum nächsten Mal!";
-	
+
 	public boolean canHandle(HandlerInput input) {
-		return input.matches(intentName("AMAZON.CancelIntent").or(intentName("AMAZON.StopIntent")));
+		return input.matches(
+				intentName("AMAZON.CancelIntent")
+				.or(intentName("AMAZON.StopIntent")));
 	}
 
 	public Optional<Response> handle(HandlerInput input) {

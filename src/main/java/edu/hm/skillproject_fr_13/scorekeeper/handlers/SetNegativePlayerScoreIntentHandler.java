@@ -4,7 +4,8 @@ import static com.amazon.ask.request.Predicates.intentName;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 
-public class SetNegativePlayerScoreIntentHandler extends SetPlayerScoreIntentHandler {
+public class SetNegativePlayerScoreIntentHandler
+		implements SetPlayerScoreIntentHandler {
 
 	@Override
 	public boolean canHandle(HandlerInput input) {
@@ -12,7 +13,7 @@ public class SetNegativePlayerScoreIntentHandler extends SetPlayerScoreIntentHan
 	}
 	
 	@Override
-	protected Long parsePoints(String points) {
+	public long calculatePoints(String points) {
 		return -Long.parseLong(points);
 	}
 

@@ -3,6 +3,7 @@ package edu.hm.skillproject_fr_13.scorekeeper.handlers;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 import static com.amazon.ask.request.Predicates.intentName;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
@@ -17,8 +18,8 @@ public class AddPlayerIntentHandler implements RequestHandler {
 	public static final String NO_SESSION = "Du musst zuerst eine Spielsitzung starten.";
 	public static final long DEFAULT_POINT_VALUE = 0l;
 	
-	public static final Function<String, String> PLAYER_CONTAINED = playerName -> "Der Spieler " + playerName + " spielt bereits mit.";
-	public static final Function<String, String> CONFIRMATION = playerName -> "Der Spieler: " + playerName + " nimmt nun am Spiel teil.";
+	public static final UnaryOperator<String> PLAYER_CONTAINED = playerName -> "Der Spieler " + playerName + " spielt bereits mit.";
+	public static final UnaryOperator<String> CONFIRMATION = playerName -> "Der Spieler: " + playerName + " nimmt nun am Spiel teil.";
 	
 	
 	@Override

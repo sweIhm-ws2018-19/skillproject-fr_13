@@ -1,10 +1,11 @@
 package edu.hm.skillproject_fr_13.scorekeeper.handlers;
 
+import static com.amazon.ask.request.Predicates.intentName;
+
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
-import static com.amazon.ask.request.Predicates.intentName;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.IntentRequest;
@@ -16,10 +17,10 @@ public class DeletePlayerIntentHandler implements RequestHandler {
 
 	public static final String NO_SESSION =
 			"Es sind momentan bereits keine Spieler vorhanden.";
-	public static final Function<String, String> PLAYER_NOT_CONTAINED =
+	public static final UnaryOperator<String> PLAYER_NOT_CONTAINED =
 			playerName -> "Der Spieler " + playerName 
 			+ " ist mir nicht bekannt.";
-	public static final Function<String, String> PLAYER_DELETED =
+	public static final UnaryOperator<String> PLAYER_DELETED =
 			playerName -> "Der Spieler: " + playerName
 			+ " wurde von Spiel entfernt.";
 

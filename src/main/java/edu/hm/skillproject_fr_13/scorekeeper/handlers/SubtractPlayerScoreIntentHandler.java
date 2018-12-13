@@ -4,7 +4,8 @@ import static com.amazon.ask.request.Predicates.intentName;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 
-public class SubtractPlayerScoreIntentHandler extends ModifyPlayerScoreIntentHandler {
+public class SubtractPlayerScoreIntentHandler
+		extends ModifyPlayerScoreIntentHandler {
 	
 	@Override
 	public boolean canHandle(HandlerInput input) {

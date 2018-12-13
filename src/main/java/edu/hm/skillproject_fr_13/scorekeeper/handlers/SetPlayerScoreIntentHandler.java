@@ -13,14 +13,18 @@ import com.amazon.ask.response.ResponseBuilder;
 interface SetPlayerScoreIntentHandler extends RequestHandler {
 
 	public static final String CONFIRMATION = "%d Punkte für %s gespeichert.";
-	public static final String NO_SESSION = "Du musst zuerst eine Spielsitzung starten.";
-	public static final String PLAYER_NOT_FOUND = "Der Spieler wurde nicht gefunden.";
+	public static final String NO_SESSION =
+			"Du musst zuerst eine Spielsitzung starten.";
+	public static final String PLAYER_NOT_FOUND =
+			"Der Spieler wurde nicht gefunden.";
 	public static final String REPROMPT = "Ähm... was?";
 
 	@Override
 	default Optional<Response> handle(HandlerInput input) {
 		@SuppressWarnings("unchecked")
-		final Map<String, Long> scoreTable = (Map<String, Long>) input.getAttributesManager().getPersistentAttributes()
+		final Map<String, Long> scoreTable =
+				(Map<String, Long>) input.getAttributesManager()
+				.getPersistentAttributes()
 				.get("ScoreTable");
 		ResponseBuilder responseBuilder = input.getResponseBuilder();
 
@@ -28,15 +32,20 @@ interface SetPlayerScoreIntentHandler extends RequestHandler {
 			responseBuilder.withSpeech(NO_SESSION);
 		else
 			try {
-				final Map<String, Slot> slots = ((IntentRequest) input.getRequest()).getIntent().getSlots();
+				final Map<String, Slot> slots =
+						((IntentRequest) input.getRequest())
+						.getIntent()
+						.getSlots();
 
 				final String playerName = slots.get("PlayerName").getValue();
-				final Long points = calculatePoints(slots.get("Points").getValue());
+				final Long points =
+						calculatePoints(slots.get("Points").getValue());
 
 				if (scoreTable.containsKey(playerName)) {
 					scoreTable.put(playerName, points);
 					input.getAttributesManager().savePersistentAttributes();
-					responseBuilder.withSpeech(String.format(CONFIRMATION, points, playerName));
+					responseBuilder.withSpeech(String.format(
+							CONFIRMATION, points, playerName));
 				} else {
 					responseBuilder.withSpeech(PLAYER_NOT_FOUND);
 				}

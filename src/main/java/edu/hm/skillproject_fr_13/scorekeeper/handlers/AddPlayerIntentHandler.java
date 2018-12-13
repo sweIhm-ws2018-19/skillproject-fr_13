@@ -13,41 +13,57 @@ import com.amazon.ask.model.Slot;
 import com.amazon.ask.response.ResponseBuilder;
 
 public class AddPlayerIntentHandler implements RequestHandler {
-	
-	public static final String NO_SESSION = "Du musst zuerst eine Spielsitzung starten.";
-	public static final long DEFAULT_POINT_VALUE = 0l;
-	
-	public static final Function<String, String> PLAYER_CONTAINED = playerName -> "Der Spieler " + playerName + " spielt bereits mit.";
-	public static final Function<String, String> CONFIRMATION = playerName -> "Der Spieler: " + playerName + " nimmt nun am Spiel teil.";
-	
-	
-	@Override
-	public boolean canHandle(HandlerInput input) {
-		return input.matches(intentName("AddPlayerIntent"));
-	}
 
-	@Override
-	public Optional<Response> handle(HandlerInput input) {
-		
-		final Map<String, Long> scoreTable = (Map<String,Long>) input.getAttributesManager()
-				.getPersistentAttributes().get("ScoreTable");
-		final ResponseBuilder responseBuilder = input.getResponseBuilder();
-		
+	public static final String NO_SESSION =
+			"Du musst zuerst eine Spielsitzung starten.";
+	public static final long DEFAULT_POINT_VALUE = 0L;
 
-		if (scoreTable == null)
-			responseBuilder.withSpeech(NO_SESSION);
-		else {
-			final Map<String, Slot> slots = ((IntentRequest) input.getRequest()).getIntent().getSlots();
-			final String playerName = slots.get("PlayerName").getValue();
+	public static final Function<String, String> PLAYER_CONTAINED =
+			playerName-> "Der Spieler " + playerName + " spielt bereits mit.";
+	public static final Function<String, String> CONFIRMATION =
+			playerName -> "Der Spieler: " + playerName
+			+ " nimmt nun am Spiel teil.";
 
-			if(scoreTable.containsKey(playerName)) {
-				responseBuilder.withSpeech(PLAYER_CONTAINED.apply(playerName));
-			} else {
-				scoreTable.put(playerName, DEFAULT_POINT_VALUE);
-				input.getAttributesManager().savePersistentAttributes();
-				responseBuilder.withSpeech(CONFIRMATION.apply(playerName));
-			}
-		}
-		return responseBuilder.withShouldEndSession(false).build();
-	}
+
+					@Override
+					public boolean canHandle(HandlerInput input) {
+						return input.matches(intentName("AddPlayerIntent"));
+					}
+
+					@Override
+					public Optional<Response> handle(HandlerInput input) {
+
+						@SuppressWarnings("unchecked")
+						final Map<String, Long> scoreTable =
+								(Map<String,Long>) input.getAttributesManager()
+								.getPersistentAttributes()
+								.get("ScoreTable");
+
+						final ResponseBuilder responseBuilder =
+								input.getResponseBuilder();
+
+						if (scoreTable == null)
+							responseBuilder.withSpeech(NO_SESSION);
+						else {
+							final Map<String, Slot> slots =
+									((IntentRequest) input.getRequest())
+									.getIntent()
+									.getSlots();
+							final String playerName =
+									slots.get("PlayerName").getValue();
+
+							if(scoreTable.containsKey(playerName)) {
+								responseBuilder.withSpeech(
+										PLAYER_CONTAINED.apply(playerName));
+							} else {
+								scoreTable.put(playerName, DEFAULT_POINT_VALUE);
+								input.getAttributesManager()
+										.savePersistentAttributes();
+								responseBuilder.withSpeech(
+										CONFIRMATION.apply(playerName));
+							}
+						}
+						return responseBuilder
+								.withShouldEndSession(false).build();
+					}
 }

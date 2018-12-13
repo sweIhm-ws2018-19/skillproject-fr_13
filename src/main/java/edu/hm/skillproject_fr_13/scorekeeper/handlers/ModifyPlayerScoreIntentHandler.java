@@ -9,18 +9,19 @@ import com.amazon.ask.model.IntentRequest;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 
-public abstract class ModifyPlayerScoreIntentHandler implements SetPlayerScoreIntentHandler {
+public abstract class ModifyPlayerScoreIntentHandler
+		implements SetPlayerScoreIntentHandler {
 
 	protected Long basePoints;
 
 	@Override
 	public Optional<Response> handle(HandlerInput input) {
-		
+
 		@SuppressWarnings("unchecked")
-		final Map<String, BigDecimal> scoreTable = (Map<String, BigDecimal>) input
-			.getAttributesManager()
-			.getPersistentAttributes()
-			.get("ScoreTable");
+		final Map<String, BigDecimal> scoreTable =
+				(Map<String, BigDecimal>) input.getAttributesManager()
+				.getPersistentAttributes()
+				.get("ScoreTable");
 
 		final Map<String, Slot> slots = ((IntentRequest) input.getRequest())
 				.getIntent()
@@ -32,7 +33,7 @@ public abstract class ModifyPlayerScoreIntentHandler implements SetPlayerScoreIn
 					playerName, BigDecimal.valueOf(0)).longValue();
 		} catch (NullPointerException e) {
 			basePoints = 0L;
-		} 
+		}
 
 		return SetPlayerScoreIntentHandler.super.handle(input);
 	}

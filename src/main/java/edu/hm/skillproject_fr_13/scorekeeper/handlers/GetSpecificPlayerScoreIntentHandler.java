@@ -4,15 +4,17 @@ import static com.amazon.ask.request.Predicates.intentName;
 
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
+import com.amazon.ask.model.IntentRequest;
 import com.amazon.ask.model.Response;
+import com.amazon.ask.model.Slot;
+
 
 public class GetSpecificPlayerScoreIntentHandler implements RequestHandler {
 	
-	public static final String SCORES = "Der aktuelle Punktestand für %s lautet: %s";
+	public static final String SCORES = "Der gewünschte Punktestand lautet: ";
 	public static final String NO_SCORES =
 			"Ich habe noch keinen Punktestand gespeichert.";
 
@@ -25,23 +27,30 @@ public class GetSpecificPlayerScoreIntentHandler implements RequestHandler {
 				.getAttributesManager()
 				.getPersistentAttributes()
 				.get("ScoreTable");
+		
 		final String response;
 		
 		if (scoreTable == null || scoreTable.isEmpty())
 			response = NO_SCORES;
-		else
-			response = String.format(SCORES,
-					scoreTable
-					.entrySet()
-					.stream()
-					.map(entry -> "Spieler " + entry.getKey() + ": " +
-							entry.getValue() + " Punkte")
-					.collect(Collectors.joining(", ")));
-		
+		else {
+				final Map<String, Slot> slots = ((IntentRequest) input.getRequest())
+						.getIntent()
+						.getSlots();
+
+				final String playerName = slots.get("PlayerName").getValue();
+				
+				response = String.format(SCORES,
+						scoreTable
+						.entrySet()
+						.stream()
+						.map(entry -> playerName + entry.getKey() + ": " +
+								scoreTable.get(playerName) + " Punkte"));
+			
+
+		}
 		return input.getResponseBuilder()
 				.withSpeech(response)
 				.withShouldEndSession(false)
 				.build();
 	}
-
 }

@@ -100,13 +100,13 @@
                         "wie lautet der aktuelle punktestand"
                     ]
                 },
-                                {
+                {
                 	"name": "GetSpecificPlayerScoreIntent",
                 	"slots": [
                 		{
                 			"name": "PlayerName",
                 			"type": "AMAZON.DE_FIRST_NAME"
-            			},
+            			}
         			],
         			"samples": [
         				"wieviele Punkte hat {PlayerName}",

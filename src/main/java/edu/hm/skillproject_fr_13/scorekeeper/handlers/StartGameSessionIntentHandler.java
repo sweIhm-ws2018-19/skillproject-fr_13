@@ -28,7 +28,7 @@ public class StartGameSessionIntentHandler implements RequestHandler {
 		if (persistentAttributes.containsKey("ScoreTable"))
 			response = SESSION_RUNNING;
 		else {
-			Map<String, Long> scoreTable = new HashMap<String, Long>();
+			Map<String, Long> scoreTable = new HashMap<>();
 			persistentAttributes.put("ScoreTable", scoreTable);
 			input.getAttributesManager().savePersistentAttributes();
 			response = CONFIRMATION;

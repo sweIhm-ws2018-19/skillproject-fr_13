@@ -1,13 +1,11 @@
 package edu.hm.skillproject_fr_13.scorekeeper.handlers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -24,7 +22,7 @@ import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 import com.amazon.ask.response.ResponseBuilder;
 
-public class DeletePlayerIntentHandlerTest {
+public class ModifyPlayerScoreIntentHandlerTest {
 
 	private HandlerInput inputMock;
 	private RequestHandler sut;
@@ -33,80 +31,56 @@ public class DeletePlayerIntentHandlerTest {
 	public void setup() {
 		inputMock = mock(HandlerInput.class);
 		when(inputMock.getResponseBuilder()).thenReturn(new ResponseBuilder());
-		
-		sut = new DeletePlayerIntentHandler();
+
+		sut = new AddPlayerScoreIntentHandler();
 	}
 
 	@Test
-	public void canHandleTest() {
-		when(inputMock.matches(any())).thenReturn(true);
-		assertTrue(sut.canHandle(inputMock));
-	}
-	
-	@Test
-	public void handleEmptyPersistentAttributesTest() {
-		AttributesManager mockManager = mock(AttributesManager.class);
-		Map<String, Object> map = new HashMap<>();
-		
-		when(inputMock.getAttributesManager()).thenReturn(mockManager);
-		when(mockManager.getPersistentAttributes()).thenReturn(map);
-		
-		Response response = sut.handle(inputMock).get();
-		response.getOutputSpeech().equals(AddPlayerIntentHandler.NO_SESSION);
-	}
-	
-	@Test
-	public void handleNullScoreTable() {
+	public void handleEmptyScoreTableInvalidRequest() {
 		final AttributesManager mockManager = mock(AttributesManager.class);
 		final Map<String, Object> map = new HashMap<>();
-		map.put("ScoreTable", (Map<String, Long>)null);
-		
-		when(inputMock.getAttributesManager()).thenReturn(mockManager);
-		when(mockManager.getPersistentAttributes()).thenReturn(map);
-		
-		final Response response = sut.handle(inputMock).get();
-		response.getOutputSpeech().equals(AddPlayerIntentHandler.NO_SESSION);
-	}
-
-	@Test
-	public void handleScoreTableInvalidRequest() {
-		final AttributesManager mockManager = mock(AttributesManager.class);
-		final Map<String, Object> map = new HashMap<>();
-		final Map<String, Long> scoreTable = new HashMap<>();
-		scoreTable.put("Max", AddPlayerIntentHandler.DEFAULT_POINT_VALUE);
-		map.put("ScoreTable", scoreTable); 
-		
-		final Map<String, Slot> slotMap = new HashMap<String, Slot>();
-		slotMap.put("PlayerName", Slot.builder().withValue("Tom Tester").build());
-		final Intent intent = Intent.builder().withSlots(slotMap).build();
-
-		when(inputMock.getAttributesManager()).thenReturn(mockManager);
-		when(mockManager.getPersistentAttributes()).thenReturn(map);
-		when(inputMock.getRequest()).thenReturn(IntentRequest.builder().withIntent(intent).build());		
-
-		final Optional<Response> response = sut.handle(inputMock);
-		
-		assertTrue(response.isPresent());
-	}
-	
-	@Test
-	public void handleFilledScoreTableValidRequest() {
-		final AttributesManager mockManager = mock(AttributesManager.class);
-		final Map<String, Object> map = new HashMap<>();
-		final Map<String, Long> scoreTable = new HashMap<>();
-		scoreTable.put("Tom Tester", AddPlayerIntentHandler.DEFAULT_POINT_VALUE);
+		final Map<String, BigDecimal> scoreTable = new HashMap<>();
 		map.put("ScoreTable", scoreTable);
-		
+
 		final Map<String, Slot> slotMap = new HashMap<String, Slot>();
 		slotMap.put("PlayerName", Slot.builder().withValue("Tom Tester").build());
+		slotMap.put("Points", Slot.builder().withValue("20").build());
 		final Intent intent = Intent.builder().withSlots(slotMap).build();
 
 		when(inputMock.getAttributesManager()).thenReturn(mockManager);
 		when(mockManager.getPersistentAttributes()).thenReturn(map);
-		when(inputMock.getRequest()).thenReturn(IntentRequest.builder().withIntent(intent).build());		
+		when(inputMock.getRequest()).thenReturn(IntentRequest.builder().withIntent(intent).build());
 
 		final Optional<Response> response = sut.handle(inputMock);
-		
+
+		assertTrue(response.isPresent());
+		int expectedSize = 0;
+		int actualSize = scoreTable.size();
+		assertEquals(expectedSize, actualSize);
+	}
+
+	@Test
+	public void handleScoreTableValidRequest() {
+		final AttributesManager mockManager = mock(AttributesManager.class);
+		final Map<String, Object> map = new HashMap<>();
+		final Map<String, BigDecimal> scoreTable = new HashMap<>();
+		scoreTable.put("Tom Tester", null);
+		map.put("ScoreTable", scoreTable);
+
+		final Map<String, Slot> slotMap = new HashMap<String, Slot>();
+		slotMap.put("PlayerName", Slot.builder().withValue("Tom Tester").build());
+		slotMap.put("Points", Slot.builder().withValue("20").build());
+		final Intent intent = Intent.builder().withSlots(slotMap).build();
+
+		when(inputMock.getAttributesManager()).thenReturn(mockManager);
+		when(mockManager.getPersistentAttributes()).thenReturn(map);
+		when(inputMock.getRequest()).thenReturn(IntentRequest.builder().withIntent(intent).build());
+
+		final Optional<Response> response = sut.handle(inputMock);
+
 		assertTrue(response.isPresent());
 	}
+
+	
+	
 }

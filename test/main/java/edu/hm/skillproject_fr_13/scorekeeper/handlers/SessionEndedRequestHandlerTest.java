@@ -41,12 +41,6 @@ public class SessionEndedRequestHandlerTest {
 		when(inputMock.matches(any())).thenReturn(true);
 		assertTrue(sut.canHandle(inputMock));
 	}
-
-	@Test
-	public void test_NullHandle() {
-		RequestHandler sut = new SessionEndedRequestHandler();
-		assertThrows(NullPointerException.class, () -> sut.handle(null));
-	}
 	
 	@Test
 	public void test_EmptyScoreTable() {

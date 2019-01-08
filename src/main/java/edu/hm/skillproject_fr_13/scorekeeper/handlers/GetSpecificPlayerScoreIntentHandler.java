@@ -17,6 +17,8 @@ public class GetSpecificPlayerScoreIntentHandler implements RequestHandler {
 	public static final String SCORES = "Der gewünschte Punktestand lautet: ";
 	public static final String NO_SCORES =
 			"Ich habe noch keinen Punktestand gespeichert.";
+	public static final String NO_PLAYER = 
+			"Dieser Spieler ist nicht vorhanden!";
 
 	public boolean canHandle(HandlerInput input) {
 		return input.matches(intentName("GetSpecificPlayerScoreIntent"));
@@ -32,20 +34,20 @@ public class GetSpecificPlayerScoreIntentHandler implements RequestHandler {
 		
 		if (scoreTable == null || scoreTable.isEmpty())
 			response = NO_SCORES;
+		
 		else {
-				final Map<String, Slot> slots = ((IntentRequest) input.getRequest())
-						.getIntent()
-						.getSlots();
-
-				final String playerName = slots.get("PlayerName").getValue();
-				
-				response = String.format(SCORES,
-						scoreTable
-						.entrySet()
-						.stream()
-						.map(entry -> playerName + entry.getKey() + ": " +
-								scoreTable.get(playerName) + " Punkte"));
+			final Map<String, Slot> slots = ((IntentRequest) input.getRequest())
+					.getIntent()
+					.getSlots();
+		
+			final String playerName = slots.get("PlayerName").getValue();
 			
+				if(scoreTable.containsKey(playerName) == false) {
+					response = NO_PLAYER;
+				}
+				else {
+					response = String.format(SCORES, scoreTable.get(playerName));
+				}
 
 		}
 		return input.getResponseBuilder()

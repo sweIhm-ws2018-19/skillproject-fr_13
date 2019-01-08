@@ -22,11 +22,6 @@ import edu.hm.skillproject_fr_13.scorekeeper.handlers.SessionEndedRequestHandler
 
 public class SessionEndedRequestHandlerTest {
 
-	@Test
-	public void testEnabled() {
-		assertEquals(true, true);
-	}
-
 	private HandlerInput inputMock;
 
 	@BeforeEach

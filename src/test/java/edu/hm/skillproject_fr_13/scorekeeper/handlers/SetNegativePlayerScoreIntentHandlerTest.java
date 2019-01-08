@@ -29,12 +29,9 @@ import edu.hm.skillproject_fr_13.scorekeeper.handlers.SetNegativePlayerScoreInte
 
 public class SetNegativePlayerScoreIntentHandlerTest {
 	
-	@Test
-	public void testEnabled() {
-		assertEquals(true, true);
-	}
 	
 	private HandlerInput inputMock;
+	
 
 	@BeforeEach
 	public void setup() {

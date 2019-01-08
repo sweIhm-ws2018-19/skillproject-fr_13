@@ -4,17 +4,17 @@ import static com.amazon.ask.request.Predicates.intentName;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 
-public class SetPositivePlayerScoreIntentHandler
-		implements SetPlayerScoreIntentHandler {
-
+public class SubtractPlayerScoreIntentHandler
+		extends ModifyPlayerScoreIntentHandler {
+	
 	@Override
 	public boolean canHandle(HandlerInput input) {
-		return input.matches(intentName("SetPositivePlayerScoreIntent"));
+		return input.matches(intentName("SubtractPlayerScoreIntent"));
 	}
 	
 	@Override
 	public long calculatePoints(String points) {
-		return Long.parseLong(points);
+		return basePoints - Long.parseLong(points);
 	}
 
 }

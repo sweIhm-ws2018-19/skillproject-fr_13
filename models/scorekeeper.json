@@ -184,6 +184,8 @@
                         }
                     ],
                     "samples": [
+                        "{PlayerName} bekommt {Points} Punkte",
+                        "{PlayerName} bekommt {Points}",
                         "merk dir plus {Points} punkte für {PlayerName}",
                         "schreib plus {Points} punkte für {PlayerName}",
                         "{PlayerName} hat plus {Points} punkte",
@@ -200,18 +202,11 @@
                     ]
                 },
                 {
-                    "name": "TimeoutIntent",
-                    "slots": [
-                        {
-                            "name": "time",
-                            "type": "AMAZON.NUMBER"
-                        }
-                    ],
+                    "name": "SetBackIntent",
+                    "slots": [],
                     "samples": [
-                        "warte {time} sekunden",
-                        "moment",
-                        "warte",
-                        "timeout"
+                        "eine neue Runde",
+                        "Setze den Spielstand zurück"
                     ]
                 }
             ],

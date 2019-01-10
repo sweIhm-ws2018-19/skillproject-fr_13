@@ -10,7 +10,7 @@ import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 import com.amazon.ask.response.ResponseBuilder;
 
-interface SetPlayerScoreIntentHandler extends RequestHandler {
+public abstract class SetPlayerScoreIntentHandler implements RequestHandler {
 
 	public static final String CONFIRMATION = "%d Punkte für %s gespeichert.";
 	public static final String NO_SESSION = "Du musst zuerst eine Spielsitzung starten.";
@@ -19,7 +19,7 @@ interface SetPlayerScoreIntentHandler extends RequestHandler {
 	public static final String SCORE_REACHED = "%s hat %d Punkte erreicht";
 	
 	@Override
-	default Optional<Response> handle(HandlerInput input) {
+	public Optional<Response> handle(HandlerInput input) {
 		@SuppressWarnings("unchecked")
 		final Map<String, Long> scoreTable = (Map<String, Long>) input.getAttributesManager().getPersistentAttributes()
 				.get("ScoreTable");
@@ -51,6 +51,6 @@ interface SetPlayerScoreIntentHandler extends RequestHandler {
 		return responseBuilder.withShouldEndSession(true).build();
 	}
 
-	long calculatePoints(String points);
+	abstract long calculatePoints(String points);
 
 }

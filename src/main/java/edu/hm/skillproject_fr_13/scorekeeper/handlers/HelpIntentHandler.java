@@ -10,20 +10,11 @@ import com.amazon.ask.model.Response;
 
 public class HelpIntentHandler implements RequestHandler {
 	
-	public static final String NO_SESSION =
-			"Du kannst mich auffordern, eine Spielsitzung zu starten.";
-	public static final String IN_SESSION =
-			"Nenne mir den Namen eines Spielteilnehmers und seinen Punktestand " +
-					"oder frage mich nach dem aktuellen Punktestand.";
-	
 	public boolean canHandle(HandlerInput input) {
 		return input.matches(intentName("AMAZON.HelpIntent"));
 	}
 
 	public Optional<Response> handle(HandlerInput input) {	
-		final boolean isGameSessionRunning = input.getAttributesManager()
-				.getPersistentAttributes().containsKey("ScoreTable");
-	
 		return input.getResponseBuilder()
 				.withSpeech(
 						"Ich behalte Übersicht über die Punkte in dieser Runde. "

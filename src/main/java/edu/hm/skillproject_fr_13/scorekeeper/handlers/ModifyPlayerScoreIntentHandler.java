@@ -9,7 +9,7 @@ import com.amazon.ask.model.IntentRequest;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 
-public abstract class ModifyPlayerScoreIntentHandler implements SetPlayerScoreIntentHandler {
+public abstract class ModifyPlayerScoreIntentHandler extends SetPlayerScoreIntentHandler {
 
 	protected Long basePoints;
 
@@ -34,7 +34,7 @@ public abstract class ModifyPlayerScoreIntentHandler implements SetPlayerScoreIn
 			basePoints = 0L;
 		} 
 
-		return SetPlayerScoreIntentHandler.super.handle(input);
+		return super.handle(input);
 	}
 
 }

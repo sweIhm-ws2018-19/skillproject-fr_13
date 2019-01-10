@@ -1,11 +1,11 @@
 package edu.hm.skillproject_fr_13.scorekeeper.handlers;
 
+import static com.amazon.ask.request.Predicates.intentName;
+
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
-import static com.amazon.ask.request.Predicates.intentName;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.IntentRequest;

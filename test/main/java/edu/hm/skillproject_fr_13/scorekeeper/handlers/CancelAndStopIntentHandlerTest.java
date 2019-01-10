@@ -21,17 +21,6 @@ import edu.hm.skillproject_fr_13.scorekeeper.handlers.CancelAndStopIntentHandler
 
 public class CancelAndStopIntentHandlerTest {
 	
-<<<<<<< HEAD:test/main/java/edu/hm/skillproject_fr_13/scorekeeper/handlers/CancelAndStopIntentHandlerTest.java
-=======
-	/**
-	 * generic test showing that tests are working.
-	 */
-	@Test
-	public void test_Enabled() {
-		assertEquals(true, true);
-	}
-	
->>>>>>> 8ec73ec20685411b6932cfe2fe1f878bc790b7df:src/test/java/edu/hm/skillproject_fr_13/scorekeeper/handlers/CancelAndStopIntentHandlerTest.java
 	private HandlerInput inputMock;
 	
 	@BeforeEach
@@ -54,7 +43,6 @@ public class CancelAndStopIntentHandlerTest {
 
 	@Test
 	public void test_HandleCancelAndStop() {
-		
 		
 		RequestHandler sut = new CancelAndStopIntentHandler();
 		final ResponseBuilder responseBuilder = new ResponseBuilder();

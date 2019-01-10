@@ -24,7 +24,7 @@ Nach einigen Runden möchte Otto wissen, wie es steht. Um das herauszufinden, sa
 Otto hat keine Lust mehr. Er sagt: _"Alexa, sage Score Keeper: Spielsitzung beenden"_. Damit sind die Punktestände gelöscht, und der Skill ist bereit, beim nächsten Mal wieder eine neue Spielsitzung aufzunehmen.
 
 ## Aktivitäts-Diagramm
-[![Aktivitäts-Diagramm](https://raw.githubusercontent.com/sweIhm-ws2018-19/skillproject-fr_13/master/design/Sprint_2/Aktivit%C3%A4tsdiagramm_%C3%9Cbersicht.png)](https://raw.githubusercontent.com/sweIhm-ws2018-19/skillproject-fr_13/master/design/Sprint_2/Aktivit%C3%A4tsdiagramm_%C3%9Cbersicht.png)
+[![Aktivitäts-Diagramm](https://raw.githubusercontent.com/sweIhm-ws2018-19/skillproject-fr_13/master/design/Sprint_3/Aktivit%C3%A4tsdiagramm_%C3%9Cbersicht.png)](https://raw.githubusercontent.com/sweIhm-ws2018-19/skillproject-fr_13/master/design/Sprint_3/Aktivit%C3%A4tsdiagramm_%C3%9Cbersicht.png)
 
 ## Fachklassenmodell
 ![Fachklassenmodell](https://raw.githubusercontent.com/sweIhm-ws2018-19/skillproject-fr_13/master/design/Fachklassenmodell.png)

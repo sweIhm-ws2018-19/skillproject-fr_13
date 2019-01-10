@@ -16,7 +16,8 @@ interface SetPlayerScoreIntentHandler extends RequestHandler {
 	public static final String NO_SESSION = "Du musst zuerst eine Spielsitzung starten.";
 	public static final String PLAYER_NOT_FOUND = "Der Spieler wurde nicht gefunden.";
 	public static final String REPROMPT = "Ähm... was?";
-
+	public static final String SCORE_REACHED = "%s hat %d Punkte erreicht";
+	
 	@Override
 	default Optional<Response> handle(HandlerInput input) {
 		@SuppressWarnings("unchecked")
@@ -36,15 +37,18 @@ interface SetPlayerScoreIntentHandler extends RequestHandler {
 				if (scoreTable.containsKey(playerName)) {
 					scoreTable.put(playerName, points);
 					input.getAttributesManager().savePersistentAttributes();
-					responseBuilder.withSpeech(String.format(CONFIRMATION, points, playerName));
+					if(points >=10_000) {
+						responseBuilder.withSpeech(String.format(SCORE_REACHED, playerName, points));
+					} else {
+						responseBuilder.withSpeech(String.format(CONFIRMATION, points, playerName));
+					}
 				} else {
 					responseBuilder.withSpeech(PLAYER_NOT_FOUND);
 				}
 			} catch (NullPointerException | NumberFormatException e) {
 				responseBuilder.withReprompt(REPROMPT);
 			}
-
-		return responseBuilder.withShouldEndSession(false).build();
+		return responseBuilder.withShouldEndSession(true).build();
 	}
 
 	long calculatePoints(String points);

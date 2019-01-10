@@ -2,6 +2,7 @@ package edu.hm.skillproject_fr_13.scorekeeper.handlers;
 
 import static com.amazon.ask.request.Predicates.requestType;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -13,7 +14,7 @@ import com.amazon.ask.model.Response;
 public class LaunchRequestHandler implements RequestHandler {
 	
 	public static final String WELCOME_NEWSESSION =
-			"Willkommen im Score Keeper! Du kannst jetzt eine Spielsitzung starten.";
+			"Willkommen im Score Keeper!";
 	public static final String WELCOME_CONTINUE =
 			"Willkommen zurück!";
 
@@ -28,8 +29,12 @@ public class LaunchRequestHandler implements RequestHandler {
 		
 		if(persistentAttributes.containsKey("ScoreTable"))
 			response = WELCOME_CONTINUE;
-		else
+		else {
 			response = WELCOME_NEWSESSION;
+			Map<String, Long> scoreTable = new HashMap<>();
+			persistentAttributes.put("ScoreTable", scoreTable);
+			input.getAttributesManager().savePersistentAttributes();
+		}
 		
 		return input.getResponseBuilder()
 				.withSpeech(response)

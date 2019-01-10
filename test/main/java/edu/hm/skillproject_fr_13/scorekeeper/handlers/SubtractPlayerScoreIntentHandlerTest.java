@@ -39,11 +39,6 @@ class SubtractPlayerScoreIntentHandlerTest {
 		when(inputMock.matches(any())).thenReturn(true);
 		assertTrue(sut.canHandle(inputMock));
 	}
-
-	@Test
-	public void testCalculateNull() {
-		assertThrows(NullPointerException.class, () -> sut.calculatePoints(null));
-	}
 	
 
 	@Test

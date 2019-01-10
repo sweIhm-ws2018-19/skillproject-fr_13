@@ -12,6 +12,7 @@ import edu.hm.skillproject_fr_13.scorekeeper.handlers.GetPlayerScoresIntentHandl
 import edu.hm.skillproject_fr_13.scorekeeper.handlers.HelpIntentHandler;
 import edu.hm.skillproject_fr_13.scorekeeper.handlers.LaunchRequestHandler;
 import edu.hm.skillproject_fr_13.scorekeeper.handlers.SessionEndedRequestHandler;
+import edu.hm.skillproject_fr_13.scorekeeper.handlers.SetBackIntentHandler;
 import edu.hm.skillproject_fr_13.scorekeeper.handlers.SetNegativePlayerScoreIntentHandler;
 import edu.hm.skillproject_fr_13.scorekeeper.handlers.SetPositivePlayerScoreIntentHandler;
 import edu.hm.skillproject_fr_13.scorekeeper.handlers.StartGameSessionIntentHandler;
@@ -35,7 +36,8 @@ public class ScoreKeeperStreamHandler extends SkillStreamHandler {
                        new AddPlayerIntentHandler(),
                        new DeletePlayerIntentHandler(),
                        new AddPlayerScoreIntentHandler(),
-                       new SubtractPlayerScoreIntentHandler())
+                       new SubtractPlayerScoreIntentHandler(),
+                       new SetBackIntentHandler()	)
                 .withTableName("scorekeeper-table")
                 .withAutoCreateTable(true)
                 .build();

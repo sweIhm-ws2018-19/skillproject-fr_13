@@ -50,40 +50,7 @@ public class SetPositivePlayerScoreIntentHandlerTest {
 		when(inputMock.matches(any())).thenReturn(true);
 		assertTrue(sut.canHandle(inputMock));
 	}
-	
-	@Test
-	public void test_NullScoreTable() {
-		RequestHandler sut = new SetPositivePlayerScoreIntentHandler();
-		AttributesManager attributeManager = mock(AttributesManager.class);
-		Map<String, Object> persistentAttributes = new HashMap<String, Object>();
-		persistentAttributes.put("ScoreTable", null);
 
-		when(inputMock.getAttributesManager()).thenReturn(attributeManager);
-		when(attributeManager.getPersistentAttributes()).thenReturn(persistentAttributes);
-		when(inputMock.getResponseBuilder()).thenReturn(new ResponseBuilder());
-
-		Optional<Response> response = sut.handle(inputMock);
-		assertTrue(response.isPresent());
-		assertFalse(response.get().getShouldEndSession());
-	}
-
-	@Test
-	public void test_EmptyScoreTable() {
-		RequestHandler sut = new SetPositivePlayerScoreIntentHandler();
-		
-		AttributesManager attributeManager = mock(AttributesManager.class);
-		Map<String, Object> persistentAttributes = new HashMap<String, Object>();
-		Map<String, Slot> scoreTable = new HashMap<String, Slot>();
-		persistentAttributes.put("ScoreTable", scoreTable);
-
-		when(inputMock.getAttributesManager()).thenReturn(attributeManager);
-		when(attributeManager.getPersistentAttributes()).thenReturn(persistentAttributes);
-		when(inputMock.getResponseBuilder()).thenReturn(new ResponseBuilder());
-
-		Optional<Response> response = sut.handle(inputMock);
-		assertTrue(response.isPresent());
-		assertFalse(response.get().getShouldEndSession());
-	}
 
 	@Test
 	public void testEmptyScoreTableInvalidRequest() {

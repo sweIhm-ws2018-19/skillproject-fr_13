@@ -25,7 +25,6 @@
                     "samples": [
                         "los",
                         "los geht's",
-                        "spiel starten",
                         "neues spiel",
                         "starte ein neues spiel",
                         "starte ein spiel",
@@ -198,6 +197,21 @@
                         "{PlayerName} hat {Points} punkte gewonnen",
                         "{PlayerName} hat {Points} punkte gemacht",
                         "{PlayerName} hat {Points} punkte plus gemacht"
+                    ]
+                },
+                {
+                    "name": "TimeoutIntent",
+                    "slots": [
+                        {
+                            "name": "time",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "warte {time} sekunden",
+                        "moment",
+                        "warte",
+                        "timeout"
                     ]
                 }
             ],

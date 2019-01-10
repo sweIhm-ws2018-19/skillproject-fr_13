@@ -19,6 +19,7 @@ public class EndGameSessionIntentHandler implements RequestHandler {
 	}
 
 	public Optional<Response> handle(HandlerInput input) {
+		
 		final Map<String, Object> persistentAttributes = input.getAttributesManager()
 				.getPersistentAttributes();
 		final String response;

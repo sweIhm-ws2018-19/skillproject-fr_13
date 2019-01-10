@@ -25,7 +25,13 @@ public class HelpIntentHandler implements RequestHandler {
 				.getPersistentAttributes().containsKey("ScoreTable");
 	
 		return input.getResponseBuilder()
-				.withSpeech(isGameSessionRunning ? IN_SESSION : NO_SESSION)
+				.withSpeech(
+						"Ich behalte Übersicht über die Punkte in dieser Runde. "
+						+ "Spieler können dem Spiel beitreten, sage dazu: SpielerName spielt mit. "
+						+ "Danach können die Spieler mit: SpielerName hat X Punkte, Ihre Punkte speichern. "
+						+ "Der Befehl: Punktestand ausgeben, kann jederzeit verwendet werden um die Punkte aller Spieler auszugeben. "
+						+ "Mit Befehlen wie: Alexa sage Score Keeper SpielerName bekommt X Punkte, können Punkte vergeben werden. "
+						)
 				.withShouldEndSession(false)
 				.build();
 				

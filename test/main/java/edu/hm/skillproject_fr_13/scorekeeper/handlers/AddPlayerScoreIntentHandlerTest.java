@@ -41,10 +41,4 @@ class AddPlayerScoreIntentHandlerTest {
 		assertTrue(sut.canHandle(inputMock));
 	}
 
-	@Test
-	public void testCalculateNull() {
-		assertThrows(NullPointerException.class, () -> sut.calculatePoints(null));
-	}
-
-
 }
